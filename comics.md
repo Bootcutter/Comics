@@ -8,8 +8,7 @@
 | 2 | Azimut | [Wilfrid Lupano](https://en.wikipedia.org/wiki/Wilfrid_Lupano) & Andréal | [Titan Comics](https://titan-comics.com/) |
 | 3 | Injection Vol 1–3 | [Warren Ellis](https://en.wikipedia.org/wiki/Warren_Ellis) / [Declan Shalvey](https://en.wikipedia.org/wiki/Declan_Shalvey) | [Image](https://imagecomics.com/) |
 | 4 | Rick and Morty vs. Dungeons & Dragons | [Patrick Rothfuss](https://en.wikipedia.org/wiki/Patrick_Rothfuss) / [Jim Zub](https://en.wikipedia.org/wiki/Jim_Zub) | Oni Press / IDW |
-| 5 | Dune: House Atreides (Vol 1) | [Brian Herbert](https://en.wikipedia.org/wiki/Brian_Herbert) / [Kevin J. Anderson](https://en.wikipedia.org/wiki/Kevin_J._Anderson) | [BOOM! Studios](https://www.boom-studios.com/) |
-| 6 | Dune: House Harkonnen (Vol 2) | [Brian Herbert](https://en.wikipedia.org/wiki/Brian_Herbert) / [Kevin J. Anderson](https://en.wikipedia.org/wiki/Kevin_J._Anderson) | [BOOM! Studios](https://www.boom-studios.com/) |
+| 5 | Dune: The Graphic Novel, Book 1–2 | [Brian Herbert](https://en.wikipedia.org/wiki/Brian_Herbert) / [Kevin J. Anderson](https://en.wikipedia.org/wiki/Kevin_J._Anderson) / Raúl Allén / Patricia Martín | [Abrams ComicArts](https://abramscomicarts.com/) |
 | 7 | Fevre Dream | [George R.R. Martin](https://en.wikipedia.org/wiki/George_R._R._Martin) / [Daniel Abraham](https://en.wikipedia.org/wiki/Daniel_Abraham_(author)) / Rafa Lopez | [Avatar Press](https://en.wikipedia.org/wiki/Avatar_Press) |
 | 8 | Wolfskin | [Warren Ellis](https://en.wikipedia.org/wiki/Warren_Ellis) / [Juan Jose Ryp](https://en.wikipedia.org/wiki/Juan_Jose_Ryp) | [Avatar Press](https://en.wikipedia.org/wiki/Avatar_Press) |
 | 9 | Providence | [Alan Moore](https://en.wikipedia.org/wiki/Alan_Moore) / [Jacen Burrows](https://en.wikipedia.org/wiki/Jacen_Burrows) | [Avatar Press](https://en.wikipedia.org/wiki/Avatar_Press) |

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Comic Library</title>
+  <title>Martin's Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -28,18 +28,42 @@
 
     /* Hero header */
     .hero {
-      padding: 3rem 1.5rem 2rem;
+      padding: 2.5rem 1.5rem 2rem;
       text-align: center;
-      background: linear-gradient(180deg, #1a1a2e 0%, var(--bg) 100%);
+      background: linear-gradient(180deg, #0d0d14 0%, #151520 40%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
     }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(180,50,50,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-logo {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 30px rgba(180,50,50,.35));
+      transition: transform .4s ease;
+    }
+    .hero-logo:hover { transform: scale(1.05) rotate(-2deg); }
     .hero h1 {
-      font-size: 2.8rem; font-weight: 800; letter-spacing: -.03em;
-      background: linear-gradient(135deg, #ff4d6d, #ff8fa3, #ff4d6d);
+      font-size: 2.8rem; font-weight: 800; letter-spacing: -.02em;
+      color: #e8e0d6;
+      text-shadow: 0 2px 20px rgba(180,50,50,.25);
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #c0392b, #e74c3c, #c0392b);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p { color: var(--muted); margin-top: .4rem; font-size: .95rem; }
+    .hero p {
+      color: var(--muted); margin-top: .3rem; font-size: .85rem;
+      letter-spacing: .15em; text-transform: uppercase;
+    }
     .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.2rem; }
-    .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+    .stat-num { font-size: 1.6rem; font-weight: 700; color: #e8e0d6; }
     .stat-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 
     /* Controls */
@@ -107,6 +131,9 @@
       font-size: .6rem; font-weight: 700;
       padding: .2rem .45rem; border-radius: 4px;
       pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
+    .series-indicator.complete {
+      background: #2ecc40;
     }
     .no-cover-card {
       width: 100%; aspect-ratio: 2/3;
@@ -252,6 +279,7 @@
     }
 
     @media (max-width: 700px) {
+      .hero-logo { width: 90px; height: 90px; }
       .hero h1 { font-size: 1.8rem; }
       .grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: .8rem; padding: 0 .8rem; }
       .controls { padding: 0 .8rem 1rem; }
@@ -268,8 +296,9 @@
 <body>
 
 <div class="hero">
-  <h1>Comic Library</h1>
-  <p>A personal collection</p>
+  <img class="hero-logo" src="covers/logo.jpg" alt="Logo">
+  <h1>Martin's <span>Library</span></h1>
+  <p>A curated comic collection</p>
   <div class="stats">
     <div><div class="stat-num" id="statEntries">0</div><div class="stat-label">Titles</div></div>
     <div><div class="stat-num" id="statVolumes">0</div><div class="stat-label">Volumes</div></div>
@@ -311,6 +340,7 @@ var pub_urls = {
   "Oni Press": "https://onipress.com/",
   "Ablaze": "https://ablaze.net/",
   "Marvel": "https://www.marvel.com/",
+  "Abrams ComicArts": "https://abramscomicarts.com/",
 };
 
 var singles = [
@@ -324,15 +354,12 @@ var singles = [
   { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg", desc: "On an alien world covered in colossal trees, hunters harvest precious sap while navigating deadly wildlife and rival factions." },
   { title: "The Heir", authors: "RB White", publisher: "", cover: "covers/the-heir.jpg", desc: "A fantasy epic following the heir to a fractured kingdom navigating political intrigue and ancient prophecy." },
   { title: "Seven Suns", authors: "Robert Windom / Kelvin Mao", publisher: "", cover: "covers/seven-suns.jpg", desc: "A sci-fi saga spanning seven star systems where humanity fights for survival among alien civilizations." },
-  { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg", desc: "Merlin hurls himself through time to save the future, landing in a world of Arthurian legend and cosmic warfare." },
+  { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg", desc: "Merlin hurls himself through time to save the future, landing in a world of Arthurian legend and cosmic warfare. Book One of the StarHenge series." },
   { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg", desc: "A journey to the mythical Slavic island of Buyan, where the dead go and ancient powers slumber." },
-  { title: "Dryad", authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Justin Barcelo", publisher: "Oni Press", cover: "covers/dryad.jpg", desc: "A family of ex-adventurers hiding in a quiet town is forced back into action when their secrets catch up to them." },
-  { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg", desc: "A mythic tale set in feudal Japan where warriors and spirits clash behind a veil between worlds." },
+  { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg", desc: "A mythic tale of warriors and spirits set behind a veil between worlds." },
   { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg", desc: "In a far future where humanity has spread across the stars, an empire built on genetic castes begins to fracture." },
   { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg", desc: "Chicago's only professional wizard, Harry Dresden, investigates supernatural crimes in this adaptation of the bestselling novels." },
-  { title: "American Gods: Shadows (#1)", authors: W("Neil Gaiman",wiki+"Neil_Gaiman") + " / " + W("P. Craig Russell",wiki+"P._Craig_Russell"), publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg", desc: "Shadow Moon is recruited by the mysterious Mr. Wednesday for a war between old gods and new in modern America." },
   { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg", desc: "Two orphaned sisters with cybernetic enhancements fight to survive in a dystopian city controlled by a ruthless corporation." },
-  { title: "The Unwritten", authors: W("Mike Carey",wiki+"Mike_Carey_(writer)") + " / " + W("Peter Gross",wiki+"Peter_Gross_(comics)"), publisher: "Vertigo", cover: "covers/unwritten.jpg", desc: "Tom Taylor, the inspiration for his father's Harry Potter-like fantasy series, discovers fiction is bleeding into reality." },
   { title: "Elves Vol 1", authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry", publisher: "Humanoids", cover: "covers/elves.jpg", desc: "An epic fantasy chronicling the different elven races and their struggles across a richly detailed world." },
   { title: "Star Wars", authors: W("Jason Aaron",wiki+"Jason_Aaron") + " / " + W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu") + " / Jorge Molina / Mike Mayhew", publisher: "Marvel", cover: "covers/star-wars.jpg", desc: "Set between A New Hope and The Empire Strikes Back, Luke, Leia, and Han take the fight to the Empire." },
 ];
@@ -380,13 +407,13 @@ var series = [
     ]
   },
   {
-    title: "Dune", subtitle: "Vol 1\u20132",
-    authors: W("Brian Herbert",wiki+"Brian_Herbert") + " / " + W("Kevin J. Anderson",wiki+"Kevin_J._Anderson"),
-    publisher: "BOOM! Studios", cover: "covers/dune-1.jpg",
+    title: "Dune: The Graphic Novel", subtitle: "Book 1\u20133",
+    authors: W("Brian Herbert",wiki+"Brian_Herbert") + " / " + W("Kevin J. Anderson",wiki+"Kevin_J._Anderson") + " / Ra\u00fal All\u00e9n / Patricia Mart\u00edn",
+    publisher: "Abrams ComicArts", cover: "covers/dune-1.jpg",
     items: [
-      { title: "Vol 1: House Atreides", cover: "covers/dune-1.jpg", desc: "The rise of House Atreides and the young Duke Leto's first steps toward his destiny on Arrakis." },
-      { title: "Vol 2: House Harkonnen", cover: "covers/dune-2.jpg", desc: "Baron Harkonnen schemes to destroy House Atreides while consolidating his grip on the spice trade." },
-      { title: "Vol 3: House Corrino", owned: false },
+      { title: "Book 1: Dune", cover: "covers/dune-1.jpg", desc: "Paul Atreides arrives on Arrakis as his family takes control of the most valuable planet in the universe." },
+      { title: "Book 2: Muad'Dib", cover: "covers/dune-2.jpg", desc: "Paul survives in the desert among the Fremen and begins to embrace his destiny as Muad'Dib." },
+      { title: "Book 3: The Prophet", owned: false },
     ]
   },
   {
@@ -465,6 +492,7 @@ var series = [
       { title: "Vol 9", owned: false },
       { title: "Vol 10", owned: false },
       { title: "Vol 11", owned: false },
+      { title: "Vol 12", owned: false },
     ]
   },
   {
@@ -489,6 +517,43 @@ var series = [
       { title: "Vol 5", owned: false },
       { title: "Vol 6", owned: false },
       { title: "Vol 7", owned: false },
+    ]
+  },
+  {
+    title: "The Unwritten", subtitle: "Vol 1\u201311",
+    authors: W("Mike Carey",wiki+"Mike_Carey_(writer)") + " / " + W("Peter Gross",wiki+"Peter_Gross_(comics)"),
+    publisher: "Vertigo", cover: "covers/unwritten.jpg",
+    items: [
+      { title: "Vol 1: Tommy Taylor and the Bogus Identity", cover: "covers/unwritten.jpg", desc: "Tom Taylor, the inspiration for his father's Harry Potter-like fantasy series, discovers fiction is bleeding into reality." },
+      { title: "Vol 2: Inside Man", owned: false },
+      { title: "Vol 3: Dead Man's Knock", owned: false },
+      { title: "Vol 4: Leviathan", owned: false },
+      { title: "Vol 5: On to Genesis", owned: false },
+      { title: "Vol 6: Tommy Taylor and the War of Words", owned: false },
+      { title: "Vol 7: The Wound", owned: false },
+      { title: "Vol 8: Orpheus in the Underworlds", owned: false },
+      { title: "Vol 9: The Unwritten Fables", owned: false },
+      { title: "Vol 10: War Stories", owned: false },
+      { title: "Vol 11: Apocalypse", owned: false },
+    ]
+  },
+  {
+    title: "American Gods", subtitle: "Vol 1\u20133",
+    authors: W("Neil Gaiman",wiki+"Neil_Gaiman") + " / " + W("P. Craig Russell",wiki+"P._Craig_Russell"),
+    publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg",
+    items: [
+      { title: "Vol 1: Shadows", cover: "covers/american-gods-shadows.jpg", desc: "Shadow Moon is recruited by the mysterious Mr. Wednesday for a war between old gods and new in modern America." },
+      { title: "Vol 2: My Ainsel", owned: false },
+      { title: "Vol 3: The Moment of the Storm", owned: false },
+    ]
+  },
+  {
+    title: "Dryad", subtitle: "Vol 1\u20132",
+    authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Justin Barcelo",
+    publisher: "Oni Press", cover: "covers/dryad.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/dryad.jpg", desc: "A family of ex-adventurers hiding in a quiet town is forced back into action when their secrets catch up to them." },
+      { title: "Vol 2", owned: false },
     ]
   },
 ];
@@ -716,9 +781,14 @@ function render() {
         ? '<img class="card-cover" src="' + c.cover + '" alt="' + safeTitle + '" loading="lazy" onerror="this.outerHTML=\'<div class=no-cover-card>' + safeTitle + '</div>\'">'
         : '<div class="no-cover-card">' + safeTitle + '</div>';
 
-      var badge = c.type === "series"
-        ? '<div class="series-indicator">' + c.items.length + ' vols</div>'
-        : "";
+      var badge = "";
+      if (c.type === "series") {
+        var owned = 0;
+        for (var b = 0; b < c.items.length; b++) { if (c.items[b].owned !== false) owned++; }
+        var total = c.items.length;
+        var complete = owned === total;
+        badge = '<div class="series-indicator' + (complete ? ' complete' : '') + '">' + owned + ' of ' + total + '</div>';
+      }
 
       card.innerHTML = coverHtml + badge +
         '<div class="card-overlay">' +
