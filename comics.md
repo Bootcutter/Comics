@@ -23,19 +23,18 @@
 | 17 | Legends of the Pierced Veil | Saverio Tenuta / Bruno Letizia / Carita Lupattelli | [Humanoids](https://www.humanoids.com/) |
 | 18 | Sapiens Imperium | Sam Timel / Jorge Miguel | [Humanoids](https://www.humanoids.com/) |
 | 19 | The Dark North | Martin Dunelind / Peter Bergting et al. | [Dark Horse](https://www.darkhorse.com/) |
-| 20 | Fables Vol 1–8 | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
+| 20 | Fables Vol 1–9 + Mysteries of the Heartland | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
 | 21 | Saga (6 issues) | [Brian K. Vaughan](https://en.wikipedia.org/wiki/Brian_K._Vaughan) / [Fiona Staples](https://en.wikipedia.org/wiki/Fiona_Staples) | [Image](https://imagecomics.com/) |
-| 22 | Monstress: Awakening (Vol 1) | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
-| 23 | Monstress: The Blood (Vol 2) | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
-| 24 | Rat Queens Vol 1–5 | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Roc Upchurch | [Image](https://imagecomics.com/) |
-| 25 | The Dresden Files | [Jim Butcher](https://en.wikipedia.org/wiki/Jim_Butcher) | [Dynamite](https://www.dynamite.com/) |
-| 26 | Conan (Dark Horse) Vol 1–3 | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Cary Nord](https://en.wikipedia.org/wiki/Cary_Nord) | [Dark Horse](https://www.darkhorse.com/) |
-| 27 | The Cimmerian Vol 1–4 | Various | [Ablaze](https://ablaze.net/) |
-| 28 | Hedge Knight | [George R.R. Martin](https://en.wikipedia.org/wiki/George_R._R._Martin) | |
-| 29 | American Gods: Shadows (#1) | [Neil Gaiman](https://en.wikipedia.org/wiki/Neil_Gaiman) / [P. Craig Russell](https://en.wikipedia.org/wiki/P._Craig_Russell) | [Dark Horse](https://www.darkhorse.com/) |
-| 30 | Vei Vol 1–2 | [Sara Bergmark Elfgren](https://en.wikipedia.org/wiki/Sara_Bergmark_Elfgren) / Karl Johnsson | [Insight Comics](https://insightcomics.com/) |
-| 31 | Wretches Vol 1 | James E. Roche | |
-| 32 | The Unwritten | [Mike Carey](https://en.wikipedia.org/wiki/Mike_Carey_(writer)) / [Peter Gross](https://en.wikipedia.org/wiki/Peter_Gross_(comics)) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
-| 33 | Elves Vol 1 | [Jean-Luc Istin](https://en.wikipedia.org/wiki/Jean-Luc_Istin) / Nicolas Jarry | [Humanoids](https://www.humanoids.com/) |
-| 34 | The Complete ElfQuest Vol 1–3 | [Wendy Pini](https://en.wikipedia.org/wiki/Wendy_Pini) / [Richard Pini](https://en.wikipedia.org/wiki/Richard_Pini) | [Dark Horse](https://www.darkhorse.com/) |
-| 35 | Star Wars | [Jason Aaron](https://en.wikipedia.org/wiki/Jason_Aaron) / [Leinil Francis Yu](https://en.wikipedia.org/wiki/Leinil_Francis_Yu) / Jorge Molina / Mike Mayhew | [Marvel](https://www.marvel.com/) |
+| 22 | Monstress Vol 1–2 | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
+| 23 | Rat Queens Vol 1–5 | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Roc Upchurch | [Image](https://imagecomics.com/) |
+| 24 | The Dresden Files | [Jim Butcher](https://en.wikipedia.org/wiki/Jim_Butcher) | [Dynamite](https://www.dynamite.com/) |
+| 25 | Conan (Dark Horse) Vol 1–3 | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Cary Nord](https://en.wikipedia.org/wiki/Cary_Nord) | [Dark Horse](https://www.darkhorse.com/) |
+| 26 | The Cimmerian Vol 1–4 | Various | [Ablaze](https://ablaze.net/) |
+| 27 | Tales of Dunk and Egg: Hedge Knight + Mystery Knight | [George R.R. Martin](https://en.wikipedia.org/wiki/George_R._R._Martin) | |
+| 28 | American Gods: Shadows (#1) | [Neil Gaiman](https://en.wikipedia.org/wiki/Neil_Gaiman) / [P. Craig Russell](https://en.wikipedia.org/wiki/P._Craig_Russell) | [Dark Horse](https://www.darkhorse.com/) |
+| 29 | Vei Vol 1–2 | [Sara Bergmark Elfgren](https://en.wikipedia.org/wiki/Sara_Bergmark_Elfgren) / Karl Johnsson | [Insight Comics](https://insightcomics.com/) |
+| 30 | Wretches Vol 1 | James E. Roche | |
+| 31 | The Unwritten | [Mike Carey](https://en.wikipedia.org/wiki/Mike_Carey_(writer)) / [Peter Gross](https://en.wikipedia.org/wiki/Peter_Gross_(comics)) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
+| 32 | Elves Vol 1 | [Jean-Luc Istin](https://en.wikipedia.org/wiki/Jean-Luc_Istin) / Nicolas Jarry | [Humanoids](https://www.humanoids.com/) |
+| 33 | The Complete ElfQuest Vol 1–3 | [Wendy Pini](https://en.wikipedia.org/wiki/Wendy_Pini) / [Richard Pini](https://en.wikipedia.org/wiki/Richard_Pini) | [Dark Horse](https://www.darkhorse.com/) |
+| 34 | Star Wars | [Jason Aaron](https://en.wikipedia.org/wiki/Jason_Aaron) / [Leinil Francis Yu](https://en.wikipedia.org/wiki/Leinil_Francis_Yu) / Jorge Molina / Mike Mayhew | [Marvel](https://www.marvel.com/) |
