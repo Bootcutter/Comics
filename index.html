@@ -136,7 +136,7 @@
 <div class="grid" id="grid"></div>
 <p class="count" id="count"></p>
 
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+<div class="drawer-overlay" id="drawerOverlay">
   <div class="drawer" id="drawer"></div>
 </div>
 
@@ -306,44 +306,61 @@ function pubTag(publisher) {
 }
 
 function coverImg(src, alt, cls) {
-  if (!src) return `<div class="${cls || 'no-cover'}">${alt ? alt[0] : '?'}</div>`;
-  return `<img class="${cls || 'cover-img'}" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\\'no-cover\\'>${(alt||'?')[0]}</div>'">`;
+  const c = cls || "cover-img";
+  const letter = alt ? alt.replace(/[<>"'&]/g, "")[0] || "?" : "?";
+  if (!src) return `<div class="${c} no-cover">${letter}</div>`;
+  return `<img class="${c}" src="${src}" alt="${alt || ""}" loading="lazy" onerror="this.style.display='none'">`;
 }
 
 // Drawer
 function openDrawer(idx) {
   const s = series[idx];
+  if (!s) return;
   const drawer = document.getElementById("drawer");
-  drawer.innerHTML = `
-    <div class="drawer-header">
-      ${coverImg(s.cover, s.title)}
-      <div class="card-info">
-        <div class="card-title">${s.title} <span style="color:var(--muted);font-weight:400;font-size:.8rem">(${s.subtitle})</span></div>
-        <div class="card-authors">${s.authors}</div>
-        ${pubTag(s.publisher)}
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+  drawer.innerHTML = "";
+
+  const header = document.createElement("div");
+  header.className = "drawer-header";
+  header.innerHTML = `
+    ${coverImg(s.cover, s.title)}
+    <div class="card-info">
+      <div class="card-title">${s.title} <span style="color:var(--muted);font-weight:400;font-size:.8rem">(${s.subtitle})</span></div>
+      <div class="card-authors">${s.authors}</div>
+      ${pubTag(s.publisher)}
     </div>
-    ${s.items.map(item => `
-      <div class="drawer-item">
-        ${coverImg(item.cover, item.title, 'cover-img')}
-        <div class="drawer-item-info">
-          <div class="drawer-item-title">${item.title}</div>
-        </div>
-      </div>
-    `).join("")}
   `;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "drawer-close";
+  closeBtn.innerHTML = "&times;";
+  closeBtn.addEventListener("click", function(e) { e.stopPropagation(); closeDrawer(); });
+  header.appendChild(closeBtn);
+  drawer.appendChild(header);
+
+  s.items.forEach(function(item) {
+    const el = document.createElement("div");
+    el.className = "drawer-item";
+    el.innerHTML = `
+      ${coverImg(item.cover, item.title, "cover-img")}
+      <div class="drawer-item-info">
+        <div class="drawer-item-title">${item.title}</div>
+      </div>
+    `;
+    drawer.appendChild(el);
+  });
+
   document.getElementById("drawerOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
 }
 
-function closeDrawer(e) {
-  if (e && e.target !== e.currentTarget) return;
+function closeDrawer() {
   document.getElementById("drawerOverlay").classList.remove("open");
   document.body.style.overflow = "";
 }
 
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+document.getElementById("drawerOverlay").addEventListener("click", function(e) {
+  if (e.target === this) closeDrawer();
+});
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeDrawer(); });
 
 function render() {
   const q = document.getElementById("search").value.toLowerCase();
@@ -365,29 +382,35 @@ function render() {
   });
 
   const grid = document.getElementById("grid");
-  grid.innerHTML = filtered.map(c => {
+  grid.innerHTML = "";
+  filtered.forEach(function(c) {
+    const card = document.createElement("div");
+    card.className = "card";
     if (c.type === "series") {
       const idx = series.indexOf(c);
-      return `
-        <div class="card" style="cursor:pointer" onclick="openDrawer(${idx})">
-          ${coverImg(c.cover, c.title)}
-          <div class="card-info">
-            <div class="card-title">${c.title} <span class="series-badge">${c.items.length} vols</span></div>
-            <div class="card-authors">${c.authors}</div>
-            ${pubTag(c.publisher)}
-          </div>
+      card.style.cursor = "pointer";
+      card.innerHTML = `
+        ${coverImg(c.cover, c.title)}
+        <div class="card-info">
+          <div class="card-title">${c.title} <span class="series-badge">${c.items.length} vols</span></div>
+          <div class="card-authors">${c.authors}</div>
+          ${pubTag(c.publisher)}
         </div>`;
-    }
-    return `
-      <div class="card">
+      card.addEventListener("click", function(e) {
+        if (e.target.closest("a")) return;
+        openDrawer(idx);
+      });
+    } else {
+      card.innerHTML = `
         ${coverImg(c.cover, c.title)}
         <div class="card-info">
           <div class="card-title">${c.title}</div>
           <div class="card-authors">${c.authors}</div>
           ${pubTag(c.publisher)}
-        </div>
-      </div>`;
-  }).join("");
+        </div>`;
+    }
+    grid.appendChild(card);
+  });
 
   const total = singles.length + series.reduce((n, s) => n + s.items.length, 0);
   document.getElementById("count").textContent = `${filtered.length} entries \u2022 ${total} total volumes`;
