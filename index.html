@@ -33,18 +33,12 @@
       background: linear-gradient(180deg, #1a1a2e 0%, var(--bg) 100%);
     }
     .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      letter-spacing: -.03em;
+      font-size: 2.8rem; font-weight: 800; letter-spacing: -.03em;
       background: linear-gradient(135deg, #ff4d6d, #ff8fa3, #ff4d6d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero p { color: var(--muted); margin-top: .4rem; font-size: .95rem; }
-    .stats {
-      display: flex; justify-content: center; gap: 2rem; margin-top: 1.2rem;
-    }
+    .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1.2rem; }
     .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
     .stat-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 
@@ -53,9 +47,7 @@
       max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 1.5rem;
       display: flex; gap: .6rem; flex-wrap: wrap;
     }
-    .search-wrap {
-      flex: 1; min-width: 220px; position: relative;
-    }
+    .search-wrap { flex: 1; min-width: 220px; position: relative; }
     .search-wrap svg {
       position: absolute; left: .8rem; top: 50%; transform: translateY(-50%);
       width: 16px; height: 16px; color: var(--muted); pointer-events: none;
@@ -74,103 +66,75 @@
     }
     .controls select:focus { outline: none; border-color: var(--accent); }
 
-    /* Grid — cover-focused */
+    /* Grid */
     .grid {
       max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 1.2rem;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.2rem;
     }
 
     /* Cover card */
     .card {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      cursor: default;
-      transition: transform .2s ease, box-shadow .2s ease;
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      cursor: default; transition: transform .2s ease, box-shadow .2s ease;
     }
-    .card:hover {
-      transform: scale(1.04);
-      box-shadow: 0 12px 40px rgba(0,0,0,.5);
-      z-index: 2;
-    }
+    .card:hover { transform: scale(1.04); box-shadow: 0 12px 40px rgba(0,0,0,.5); z-index: 2; }
     .card-cover {
-      width: 100%;
-      aspect-ratio: 2/3;
-      object-fit: cover;
-      display: block;
-      background: #2a2a2a;
-      border-radius: var(--radius);
+      width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
+      background: #2a2a2a; border-radius: var(--radius);
     }
     .card-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(0deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.4) 40%, transparent 60%);
-      opacity: 0;
-      transition: opacity .25s;
+      opacity: 0; transition: opacity .25s;
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: .8rem;
-      border-radius: var(--radius);
+      padding: .8rem; border-radius: var(--radius);
     }
     .card:hover .card-overlay { opacity: 1; }
-    .card-overlay .title {
-      font-size: .82rem; font-weight: 700; line-height: 1.2;
-      margin-bottom: .2rem;
-    }
-    .card-overlay .authors {
-      font-size: .68rem; color: #bbb; line-height: 1.3;
-    }
+    .card-overlay .title { font-size: .82rem; font-weight: 700; line-height: 1.2; margin-bottom: .2rem; }
+    .card-overlay .authors { font-size: .68rem; color: #bbb; line-height: 1.3; }
     .card-overlay .tag {
       display: inline-block; margin-top: .3rem;
       background: var(--accent); color: #fff;
       padding: .12rem .4rem; border-radius: 4px;
-      font-size: .6rem; font-weight: 600;
-      text-decoration: none; width: fit-content;
+      font-size: .6rem; font-weight: 600; text-decoration: none; width: fit-content;
     }
     .card-overlay .tag:hover { background: var(--accent2); }
     .card-overlay a { color: #ddd; text-decoration: none; border: none; }
     .card-overlay a:hover { color: #fff; }
-
     .series-indicator {
       position: absolute; top: .5rem; right: .5rem;
       background: var(--accent); color: #fff;
       font-size: .6rem; font-weight: 700;
       padding: .2rem .45rem; border-radius: 4px;
-      pointer-events: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+      pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,.4);
     }
-
     .no-cover-card {
       width: 100%; aspect-ratio: 2/3;
       background: linear-gradient(135deg, #1a1a2e, #2a2a4a);
       border-radius: var(--radius);
       display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; color: var(--muted); text-align: center;
-      padding: .5rem;
+      font-size: .75rem; color: var(--muted); text-align: center; padding: .5rem;
     }
 
     /* Drawer */
     .drawer-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.7);
-      backdrop-filter: blur(4px);
-      z-index: 100; opacity: 0; pointer-events: none;
-      transition: opacity .3s;
+      position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      backdrop-filter: blur(4px); z-index: 100;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
     }
     .drawer-overlay.open { opacity: 1; pointer-events: auto; }
     .drawer {
-      position: fixed; top: 0; right: -440px;
-      width: 420px; max-width: 92vw;
+      position: fixed; top: 0; right: -720px;
+      width: 700px; max-width: 95vw;
       height: 100vh; background: var(--surface);
       z-index: 101; transition: right .35s cubic-bezier(.4,0,.2,1);
       overflow-y: auto;
       box-shadow: -8px 0 40px rgba(0,0,0,.6);
+      display: flex; flex-direction: column;
     }
     .drawer-overlay.open .drawer { right: 0; }
 
-    .drawer-hero {
-      position: relative; padding: 0;
-    }
+    .drawer-hero { position: relative; flex-shrink: 0; }
     .drawer-hero-img {
       width: 100%; aspect-ratio: 16/9; object-fit: cover;
       filter: brightness(.5); display: block;
@@ -188,8 +152,7 @@
       display: inline-block; margin-top: .4rem;
       background: var(--accent); color: #fff;
       padding: .15rem .5rem; border-radius: 4px;
-      font-size: .68rem; font-weight: 600;
-      text-decoration: none;
+      font-size: .68rem; font-weight: 600; text-decoration: none;
     }
     .drawer-close {
       position: absolute; top: .8rem; right: .8rem;
@@ -201,21 +164,53 @@
     }
     .drawer-close:hover { background: var(--accent); }
 
-    .drawer-list { padding: .5rem 0; }
+    /* Drawer body: split layout */
+    .drawer-body {
+      display: flex; flex: 1; min-height: 0;
+    }
+
+    /* Preview panel (left) */
+    .drawer-preview {
+      width: 280px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 1.2rem;
+      border-right: 1px solid #2a2a2a;
+      overflow-y: auto;
+    }
+    .drawer-preview.empty {
+      justify-content: center; color: var(--muted); font-size: .8rem;
+    }
+    .drawer-preview img {
+      width: 100%; max-width: 220px; border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    }
+    .drawer-preview-title {
+      font-size: .95rem; font-weight: 600; margin-top: .8rem; text-align: center;
+    }
+    .drawer-preview-desc {
+      font-size: .78rem; color: var(--muted); margin-top: .5rem;
+      line-height: 1.5; text-align: center;
+    }
+
+    /* Volume list (right) */
+    .drawer-list {
+      flex: 1; overflow-y: auto; padding: .3rem 0;
+    }
     .drawer-item {
-      display: flex; gap: .8rem; padding: .7rem 1.2rem;
+      display: flex; gap: .7rem; padding: .6rem 1rem;
       align-items: center; transition: background .15s;
+      cursor: pointer; border-left: 3px solid transparent;
     }
     .drawer-item:hover { background: rgba(255,255,255,.04); }
+    .drawer-item.active {
+      background: rgba(255,77,109,.08);
+      border-left-color: var(--accent);
+    }
     .drawer-item img {
-      width: 44px; height: 62px; object-fit: cover;
-      border-radius: 6px; background: #2a2a2a; flex-shrink: 0;
+      width: 38px; height: 54px; object-fit: cover;
+      border-radius: 4px; background: #2a2a2a; flex-shrink: 0;
     }
-    .drawer-item-num {
-      width: 20px; font-size: .7rem; color: var(--muted);
-      text-align: center; flex-shrink: 0;
-    }
-    .drawer-item-title { font-size: .85rem; font-weight: 500; }
+    .drawer-item-title { font-size: .82rem; font-weight: 500; }
 
     .count {
       text-align: center; color: var(--muted);
@@ -227,6 +222,14 @@
       .grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: .8rem; padding: 0 .8rem; }
       .controls { padding: 0 .8rem 1rem; }
       .drawer { width: 100vw; max-width: 100vw; }
+      .drawer-body { flex-direction: column; }
+      .drawer-preview {
+        width: 100%; border-right: none; border-bottom: 1px solid #2a2a2a;
+        padding: .8rem; flex-direction: row; gap: 1rem;
+        max-height: 200px; overflow: hidden;
+      }
+      .drawer-preview img { width: 100px; max-width: 100px; }
+      .drawer-preview-title, .drawer-preview-desc { text-align: left; }
     }
   </style>
 </head>
@@ -260,9 +263,9 @@
 </div>
 
 <script>
-const W = (text, url) => url ? `<a href="${url}" target="_blank">${text}</a>` : text;
-const wiki = "https://en.wikipedia.org/wiki/";
-const pub_urls = {
+var W = function(text, url) { return url ? '<a href="' + url + '" target="_blank">' + text + '</a>' : text; };
+var wiki = "https://en.wikipedia.org/wiki/";
+var pub_urls = {
   "Image": "https://imagecomics.com/",
   "Titan Comics": "https://titan-comics.com/",
   "Oni Press / IDW": "https://onipress.com/",
@@ -278,85 +281,84 @@ const pub_urls = {
   "Marvel": "https://www.marvel.com/",
 };
 
-const singles = [
-  { title: "Arrowsmith", authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Carlos Pacheco",wiki+"Carlos_Pacheco")}`, publisher: "Image", cover: "covers/arrowsmith.jpg" },
-  { title: "Azimut", authors: `${W("Wilfrid Lupano",wiki+"Wilfrid_Lupano")} & Andr\u00e9al`, publisher: "Titan Comics", cover: "covers/azimut.jpg" },
-  { title: "Rick and Morty vs. D&amp;D", authors: `${W("Patrick Rothfuss",wiki+"Patrick_Rothfuss")} / ${W("Jim Zub",wiki+"Jim_Zub")}`, publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg" },
-  { title: "Fevre Dream", authors: `${W("George R.R. Martin",wiki+"George_R._R._Martin")} / ${W("Daniel Abraham",wiki+"Daniel_Abraham_(author)")} / Rafa Lopez`, publisher: "Avatar Press", cover: "covers/fevre-dream.jpg" },
-  { title: "Wolfskin", authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp")}`, publisher: "Avatar Press", cover: "covers/wolfskin.jpg" },
-  { title: "Providence", authors: `${W("Alan Moore",wiki+"Alan_Moore")} / ${W("Jacen Burrows",wiki+"Jacen_Burrows")}`, publisher: "Avatar Press", cover: "covers/providence.jpg" },
-  { title: "Cutting Edge", authors: `${W("Francesco Dimitri",wiki+"Francesco_Dimitri")} / Mario Alberti`, publisher: "Titan Comics", cover: "covers/cutting-edge.jpg" },
+var singles = [
+  { title: "Arrowsmith", authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Carlos Pacheco",wiki+"Carlos_Pacheco"), publisher: "Image", cover: "covers/arrowsmith.jpg" },
+  { title: "Azimut", authors: W("Wilfrid Lupano",wiki+"Wilfrid_Lupano") + " & Andr\u00e9al", publisher: "Titan Comics", cover: "covers/azimut.jpg" },
+  { title: "Rick and Morty vs. D&amp;D", authors: W("Patrick Rothfuss",wiki+"Patrick_Rothfuss") + " / " + W("Jim Zub",wiki+"Jim_Zub"), publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg" },
+  { title: "Fevre Dream", authors: W("George R.R. Martin",wiki+"George_R._R._Martin") + " / " + W("Daniel Abraham",wiki+"Daniel_Abraham_(author)") + " / Rafa Lopez", publisher: "Avatar Press", cover: "covers/fevre-dream.jpg" },
+  { title: "Wolfskin", authors: W("Warren Ellis",wiki+"Warren_Ellis") + " / " + W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp"), publisher: "Avatar Press", cover: "covers/wolfskin.jpg" },
+  { title: "Providence", authors: W("Alan Moore",wiki+"Alan_Moore") + " / " + W("Jacen Burrows",wiki+"Jacen_Burrows"), publisher: "Avatar Press", cover: "covers/providence.jpg" },
+  { title: "Cutting Edge", authors: W("Francesco Dimitri",wiki+"Francesco_Dimitri") + " / Mario Alberti", publisher: "Titan Comics", cover: "covers/cutting-edge.jpg" },
   { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg" },
   { title: "The Heir", authors: "RB White", publisher: "", cover: "covers/the-heir.jpg" },
   { title: "Seven Suns", authors: "Robert Windom / Kelvin Mao", publisher: "", cover: "covers/seven-suns.jpg" },
   { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg" },
   { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg" },
-  { title: "Dryad", authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Justin Barcelo`, publisher: "Oni Press", cover: "covers/dryad.jpg" },
+  { title: "Dryad", authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Justin Barcelo", publisher: "Oni Press", cover: "covers/dryad.jpg" },
   { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg" },
   { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg" },
-  { title: "Saga (6 issues)", authors: `${W("Brian K. Vaughan",wiki+"Brian_K._Vaughan")} / ${W("Fiona Staples",wiki+"Fiona_Staples")}`, publisher: "Image", cover: "covers/saga.jpg" },
   { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg" },
-  { title: "American Gods: Shadows (#1)", authors: `${W("Neil Gaiman",wiki+"Neil_Gaiman")} / ${W("P. Craig Russell",wiki+"P._Craig_Russell")}`, publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
+  { title: "American Gods: Shadows (#1)", authors: W("Neil Gaiman",wiki+"Neil_Gaiman") + " / " + W("P. Craig Russell",wiki+"P._Craig_Russell"), publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
   { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg" },
-  { title: "The Unwritten", authors: `${W("Mike Carey",wiki+"Mike_Carey_(writer)")} / ${W("Peter Gross",wiki+"Peter_Gross_(comics)")}`, publisher: "Vertigo", cover: "covers/unwritten.jpg" },
-  { title: "Elves Vol 1", authors: `${W("Jean-Luc Istin",wiki+"Jean-Luc_Istin")} / Nicolas Jarry`, publisher: "Humanoids", cover: "covers/elves.jpg" },
-  { title: "Star Wars", authors: `${W("Jason Aaron",wiki+"Jason_Aaron")} / ${W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu")} / Jorge Molina / Mike Mayhew`, publisher: "Marvel", cover: "covers/star-wars.jpg" },
+  { title: "The Unwritten", authors: W("Mike Carey",wiki+"Mike_Carey_(writer)") + " / " + W("Peter Gross",wiki+"Peter_Gross_(comics)"), publisher: "Vertigo", cover: "covers/unwritten.jpg" },
+  { title: "Elves Vol 1", authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry", publisher: "Humanoids", cover: "covers/elves.jpg" },
+  { title: "Star Wars", authors: W("Jason Aaron",wiki+"Jason_Aaron") + " / " + W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu") + " / Jorge Molina / Mike Mayhew", publisher: "Marvel", cover: "covers/star-wars.jpg" },
 ];
 
-const series = [
+var series = [
   {
     title: "Fables", subtitle: "Vol 1\u20139 + Werewolves",
-    authors: `${W("Bill Willingham",wiki+"Bill_Willingham")} / ${W("Mark Buckingham",wiki+"Mark_Buckingham")}`,
+    authors: W("Bill Willingham",wiki+"Bill_Willingham") + " / " + W("Mark Buckingham",wiki+"Mark_Buckingham"),
     publisher: "Vertigo", cover: "covers/fables-1.jpg",
     items: [
-      { title: "Vol 1: Legends in Exile", cover: "covers/fables-1.jpg" },
-      { title: "Vol 2: Animal Farm", cover: "covers/fables-2.jpg" },
-      { title: "Vol 3: Storybook Love", cover: "covers/fables-3.jpg" },
-      { title: "Vol 4: March of the Wooden Soldiers", cover: "covers/fables-4.jpg" },
-      { title: "Vol 5: The Mean Seasons", cover: "covers/fables-5.jpg" },
-      { title: "Vol 6: Homelands", cover: "covers/fables-6.jpg" },
-      { title: "Vol 7: Arabian Nights (and Days)", cover: "covers/fables-7.jpg" },
-      { title: "Vol 8: Wolves", cover: "covers/fables-8.jpg" },
-      { title: "Vol 9: Sons of Empire", cover: "covers/fables-9.jpg" },
-      { title: "Werewolves of the Heartland", cover: "covers/fables-werewolves.jpg" },
+      { title: "Vol 1: Legends in Exile", cover: "covers/fables-1.jpg", desc: "Fairy tale characters living in exile in New York City must solve a murder in their hidden community." },
+      { title: "Vol 2: Animal Farm", cover: "covers/fables-2.jpg", desc: "Revolution brews at the Farm, the upstate refuge for Fables who can't pass as human." },
+      { title: "Vol 3: Storybook Love", cover: "covers/fables-3.jpg", desc: "Bigby and Snow White are lured into the woods by a journalist who knows the Fables' secret." },
+      { title: "Vol 4: March of the Wooden Soldiers", cover: "covers/fables-4.jpg", desc: "The Adversary's wooden soldiers infiltrate Fabletown, leading to an all-out war on the streets." },
+      { title: "Vol 5: The Mean Seasons", cover: "covers/fables-5.jpg", desc: "Snow White raises her cubs while Bigby undertakes a covert mission against the Adversary." },
+      { title: "Vol 6: Homelands", cover: "covers/fables-6.jpg", desc: "Boy Blue goes behind enemy lines on a one-man mission to the conquered Homelands." },
+      { title: "Vol 7: Arabian Nights (and Days)", cover: "covers/fables-7.jpg", desc: "A diplomatic delegation from the Arabian Fables arrives, bringing magic lamps and deadly djinn." },
+      { title: "Vol 8: Wolves", cover: "covers/fables-8.jpg", desc: "Bigby Wolf returns to finally confront Fabletown's enemies and settle things with Snow White." },
+      { title: "Vol 9: Sons of Empire", cover: "covers/fables-9.jpg", desc: "The Adversary's empire plots a full-scale invasion of the mundane world." },
+      { title: "Werewolves of the Heartland", cover: "covers/fables-werewolves.jpg", desc: "Bigby Wolf discovers a small Iowa town populated entirely by werewolves with ties to his past." },
     ]
   },
   {
     title: "Injection", subtitle: "Vol 1\u20133",
-    authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Declan Shalvey",wiki+"Declan_Shalvey")}`,
+    authors: W("Warren Ellis",wiki+"Warren_Ellis") + " / " + W("Declan Shalvey",wiki+"Declan_Shalvey"),
     publisher: "Image", cover: "covers/injection.jpg",
     items: [
-      { title: "Vol 1", cover: "covers/injection.jpg" },
-      { title: "Vol 2", cover: "covers/injection-2.jpg" },
-      { title: "Vol 3", cover: "covers/injection-3.jpg" },
+      { title: "Vol 1", cover: "covers/injection.jpg", desc: "Five brilliant minds created an AI and injected it into the fabric of reality. Now it's rewriting the world." },
+      { title: "Vol 2", cover: "covers/injection-2.jpg", desc: "Vivek Headland investigates a haunted house that the Injection has turned into something far worse." },
+      { title: "Vol 3", cover: "covers/injection-3.jpg", desc: "Brigid Roth faces a corporate conspiracy intertwined with the Injection's growing influence." },
     ]
   },
   {
     title: "Dune", subtitle: "Vol 1\u20132",
-    authors: `${W("Brian Herbert",wiki+"Brian_Herbert")} / ${W("Kevin J. Anderson",wiki+"Kevin_J._Anderson")}`,
+    authors: W("Brian Herbert",wiki+"Brian_Herbert") + " / " + W("Kevin J. Anderson",wiki+"Kevin_J._Anderson"),
     publisher: "BOOM! Studios", cover: "covers/dune-1.jpg",
     items: [
-      { title: "Vol 1: House Atreides", cover: "covers/dune-1.jpg" },
-      { title: "Vol 2: House Harkonnen", cover: "covers/dune-2.jpg" },
+      { title: "Vol 1: House Atreides", cover: "covers/dune-1.jpg", desc: "The rise of House Atreides and the young Duke Leto's first steps toward his destiny on Arrakis." },
+      { title: "Vol 2: House Harkonnen", cover: "covers/dune-2.jpg", desc: "Baron Harkonnen schemes to destroy House Atreides while consolidating his grip on the spice trade." },
     ]
   },
   {
     title: "Monstress", subtitle: "Vol 1\u20132",
-    authors: `${W("Marjorie Liu",wiki+"Marjorie_Liu")} / ${W("Sana Takeda",wiki+"Sana_Takeda")}`,
+    authors: W("Marjorie Liu",wiki+"Marjorie_Liu") + " / " + W("Sana Takeda",wiki+"Sana_Takeda"),
     publisher: "Image", cover: "covers/monstress-1.jpg",
     items: [
-      { title: "Vol 1: Awakening", cover: "covers/monstress-1.jpg" },
-      { title: "Vol 2: The Blood", cover: "covers/monstress-2.jpg" },
+      { title: "Vol 1: Awakening", cover: "covers/monstress-1.jpg", desc: "Maika Halfwolf, a teenage girl with a psychic link to a monster, navigates a war-torn matriarchal Asia." },
+      { title: "Vol 2: The Blood", cover: "covers/monstress-2.jpg", desc: "Maika and her companions journey by sea, but the monster inside her grows hungrier and harder to control." },
     ]
   },
   {
     title: "Conan (Dark Horse)", subtitle: "Vol 1\u20133",
-    authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Cary Nord",wiki+"Cary_Nord")}`,
+    authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Cary Nord",wiki+"Cary_Nord"),
     publisher: "Dark Horse", cover: "covers/conan-1.jpg",
     items: [
-      { title: "Vol 1: The Frost Giant\u2019s Daughter", cover: "covers/conan-1.jpg" },
-      { title: "Vol 2: The God in the Bowl", cover: "covers/conan-2.jpg" },
-      { title: "Vol 3: The Tower of the Elephant", cover: "covers/conan-3.jpg" },
+      { title: "Vol 1: The Frost Giant\u2019s Daughter", cover: "covers/conan-1.jpg", desc: "A young Conan leaves Cimmeria and faces his first battles in the frozen north." },
+      { title: "Vol 2: The God in the Bowl", cover: "covers/conan-2.jpg", desc: "Conan is accused of murder in a locked museum and must face an ancient serpent god." },
+      { title: "Vol 3: The Tower of the Elephant", cover: "covers/conan-3.jpg", desc: "Conan infiltrates a sorcerer's tower to steal a legendary jewel and discovers an alien prisoner." },
     ]
   },
   {
@@ -364,31 +366,44 @@ const series = [
     authors: "Various",
     publisher: "Ablaze", cover: "covers/cimmerian-1.jpg",
     items: [
-      { title: "Vol 1", cover: "covers/cimmerian-1.jpg" },
-      { title: "Vol 2", cover: "covers/cimmerian-2.jpg" },
-      { title: "Vol 3", cover: "covers/cimmerian-3.jpg" },
-      { title: "Vol 4", cover: "covers/cimmerian-4.jpg" },
+      { title: "Vol 1: Queen of the Black Coast", cover: "covers/cimmerian-1.jpg", desc: "Conan joins the pirate queen B\u00ealit on a bloody voyage along the Black Coast." },
+      { title: "Vol 2: Beyond the Black River", cover: "covers/cimmerian-2.jpg", desc: "Conan defends frontier settlers against Pictish raiders and dark sorcery in the wilderness." },
+      { title: "Vol 3: Iron Shadows in the Moon", cover: "covers/cimmerian-3.jpg", desc: "Stranded on a mysterious island, Conan faces iron statues that come alive under moonlight." },
+      { title: "Vol 4: Red Nails", cover: "covers/cimmerian-4.jpg", desc: "Conan and Valeria discover a sealed city where two factions wage an eternal war of annihilation." },
     ]
   },
   {
     title: "Vei", subtitle: "Vol 1\u20132",
-    authors: `${W("Sara Bergmark Elfgren",wiki+"Sara_Bergmark_Elfgren")} / Karl Johnsson`,
+    authors: W("Sara Bergmark Elfgren",wiki+"Sara_Bergmark_Elfgren") + " / Karl Johnsson",
     publisher: "Insight Comics", cover: "covers/vei-1.jpg",
     items: [
-      { title: "Vol 1", cover: "covers/vei-1.jpg" },
-      { title: "Vol 2", cover: "covers/vei-2.jpg" },
+      { title: "Vol 1", cover: "covers/vei-1.jpg", desc: "A young Norse goddess must navigate the politics of Asgard after a devastating war between the realms." },
+      { title: "Vol 2", cover: "covers/vei-2.jpg", desc: "Vei's quest for justice leads her deeper into the secrets of the gods and a forbidden alliance." },
     ]
   },
   {
     title: "Rat Queens", subtitle: "Vol 1\u20135",
-    authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Roc Upchurch`,
+    authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Roc Upchurch",
     publisher: "Image", cover: "covers/rat-queens-1.jpg",
     items: [
-      { title: "Vol 1: Sass & Sorcery", cover: "covers/rat-queens-1.jpg" },
-      { title: "Vol 2: The Far Reaching Tentacles of N\u2019Rygoth", cover: "covers/rat-queens-2.jpg" },
-      { title: "Vol 3: Demons", cover: "covers/rat-queens-3.jpg" },
-      { title: "Vol 4: High Fantasies", cover: "covers/rat-queens-4.jpg" },
-      { title: "Vol 5: The Colossal Magic Nothing", cover: "covers/rat-queens-5.jpg" },
+      { title: "Vol 1: Sass & Sorcery", cover: "covers/rat-queens-1.jpg", desc: "Four foul-mouthed adventurers drink, brawl, and stumble into a conspiracy to wipe out every quest party in Palisade." },
+      { title: "Vol 2: The Far Reaching Tentacles of N\u2019Rygoth", cover: "covers/rat-queens-2.jpg", desc: "An old god stirs beneath the city as the Queens face their pasts and an army of the undead." },
+      { title: "Vol 3: Demons", cover: "covers/rat-queens-3.jpg", desc: "Dee's dark secret catches up to the group when her eldritch family cult comes calling." },
+      { title: "Vol 4: High Fantasies", cover: "covers/rat-queens-4.jpg", desc: "A psychedelic mushroom trip goes wrong, trapping the Queens in their own twisted fantasies." },
+      { title: "Vol 5: The Colossal Magic Nothing", cover: "covers/rat-queens-5.jpg", desc: "A time-bending catastrophe threatens to erase the Rat Queens from existence." },
+    ]
+  },
+  {
+    title: "Saga", subtitle: "Vol 1\u20136",
+    authors: W("Brian K. Vaughan",wiki+"Brian_K._Vaughan") + " / " + W("Fiona Staples",wiki+"Fiona_Staples"),
+    publisher: "Image", cover: "covers/saga.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/saga.jpg", desc: "Star-crossed lovers from warring alien races go on the run with their newborn daughter." },
+      { title: "Vol 2", cover: "covers/saga-2.jpg", desc: "The family seeks refuge while bounty hunters and both armies close in on them." },
+      { title: "Vol 3", cover: "covers/saga-3.jpg", desc: "Marko's parents arrive, and a trip to a lonely lighthouse reveals dark secrets." },
+      { title: "Vol 4", cover: "covers/saga-4.jpg", desc: "A tabloid journalist hunts for the story of Alana and Marko while the family tries to settle down." },
+      { title: "Vol 5", cover: "covers/saga-5.jpg", desc: "Marko's past catches up to him as old flames and new enemies threaten to tear the family apart." },
+      { title: "Vol 6", cover: "covers/saga-6.jpg", desc: "A devastating timeskip. Hazel is a kindergartener, and the family is scattered across the galaxy." },
     ]
   },
   {
@@ -396,67 +411,84 @@ const series = [
     authors: W("George R.R. Martin",wiki+"George_R._R._Martin"),
     publisher: "", cover: "covers/hedge-knight.jpg",
     items: [
-      { title: "The Hedge Knight", cover: "covers/hedge-knight.jpg" },
-      { title: "The Mystery Knight", cover: "covers/mystery-knight.jpg" },
+      { title: "The Hedge Knight", cover: "covers/hedge-knight.jpg", desc: "A young squire enters a tourney at Ashford Meadow and sparks a trial of seven in Westeros." },
+      { title: "The Mystery Knight", cover: "covers/mystery-knight.jpg", desc: "Dunk and Egg attend a wedding tourney that turns out to be a cover for a Blackfyre conspiracy." },
     ]
   },
   {
     title: "The Complete ElfQuest", subtitle: "Vol 1\u20133",
-    authors: `${W("Wendy Pini",wiki+"Wendy_Pini")} / ${W("Richard Pini",wiki+"Richard_Pini")}`,
+    authors: W("Wendy Pini",wiki+"Wendy_Pini") + " / " + W("Richard Pini",wiki+"Richard_Pini"),
     publisher: "Dark Horse", cover: "covers/elfquest-1.jpg",
     items: [
-      { title: "Vol 1", cover: "covers/elfquest-1.jpg" },
-      { title: "Vol 2", cover: "covers/elfquest-2.jpg" },
-      { title: "Vol 3", cover: "covers/elfquest-3.jpg" },
+      { title: "Vol 1: Fire and Flight / The Forbidden Grove / Captives of Blue Mountain", cover: "covers/elfquest-1.jpg", desc: "Cutter leads his Wolfrider tribe on a quest to find other elves after their forest home is burned." },
+      { title: "Vol 2: Quest's End / Siege at Blue Mountain / The Secret of Two-Edge", cover: "covers/elfquest-2.jpg", desc: "The elves unite against Winnowill's tyranny and uncover the mystery of the High Ones' origin." },
+      { title: "Vol 3: Kings of the Broken Wheel / Shards / Hidden Years", cover: "covers/elfquest-3.jpg", desc: "A massive time jump splits the elves across eras as they struggle to reunite and reclaim their palace." },
     ]
   },
 ];
 
 // Combine for filtering
-const allEntries = [
-  ...singles.map(s => ({ ...s, type: "single" })),
-  ...series.map((s, i) => ({ ...s, type: "series", seriesIdx: i })),
-];
+var allEntries = [];
+var i;
+for (i = 0; i < singles.length; i++) {
+  var s = singles[i]; s.type = "single"; allEntries.push(s);
+}
+for (i = 0; i < series.length; i++) {
+  var sr = series[i]; sr.type = "series"; sr.seriesIdx = i; allEntries.push(sr);
+}
 
 // Stats
-const totalVols = singles.length + series.reduce((n, s) => n + s.items.length, 0);
-const allPubs = [...new Set(allEntries.map(c => c.publisher).filter(Boolean))].sort();
+var totalVols = singles.length;
+for (i = 0; i < series.length; i++) totalVols += series[i].items.length;
+var allPubs = [];
+for (i = 0; i < allEntries.length; i++) {
+  var p = allEntries[i].publisher;
+  if (p && allPubs.indexOf(p) < 0) allPubs.push(p);
+}
+allPubs.sort();
 document.getElementById("statEntries").textContent = allEntries.length;
 document.getElementById("statVolumes").textContent = totalVols;
 document.getElementById("statPubs").textContent = allPubs.length;
 
 // Publisher filter
-const sel = document.getElementById("publisherFilter");
-allPubs.forEach(p => { const o = document.createElement("option"); o.value = p; o.textContent = p; sel.appendChild(o); });
+var sel = document.getElementById("publisherFilter");
+for (i = 0; i < allPubs.length; i++) {
+  var o = document.createElement("option");
+  o.value = allPubs[i]; o.textContent = allPubs[i];
+  sel.appendChild(o);
+}
 
 function strip(html) { return html.replace(/<[^>]*>/g, ""); }
 
 function pubTag(publisher) {
   if (!publisher) return "";
-  const url = pub_urls[publisher];
+  var url = pub_urls[publisher];
   return url
-    ? `<a class="tag" href="${url}" target="_blank">${publisher}</a>`
-    : `<span class="tag">${publisher}</span>`;
+    ? '<a class="tag" href="' + url + '" target="_blank">' + publisher + '</a>'
+    : '<span class="tag">' + publisher + '</span>';
 }
 
-// Drawer
+// Drawer state
+var activeItemIdx = -1;
+
 function openDrawer(idx) {
   var s = series[idx];
   if (!s) return;
+  activeItemIdx = 0;
   var drawer = document.getElementById("drawer");
   drawer.innerHTML = "";
 
+  // Hero
   var hero = document.createElement("div");
   hero.className = "drawer-hero";
-  hero.innerHTML = `
-    <img class="drawer-hero-img" src="${s.cover}" alt="" onerror="this.style.display='none'">
-    <div class="drawer-hero-info">
-      <div class="title">${s.title}</div>
-      <div class="sub">${s.subtitle}</div>
-      <div class="authors">${s.authors}</div>
-      ${pubTag(s.publisher)}
-    </div>
-  `;
+  hero.innerHTML =
+    '<img class="drawer-hero-img" src="' + s.cover + '" alt="" onerror="this.style.display=\'none\'">' +
+    '<div class="drawer-hero-info">' +
+      '<div class="title">' + s.title + '</div>' +
+      '<div class="sub">' + s.subtitle + '</div>' +
+      '<div class="authors">' + s.authors + '</div>' +
+      pubTag(s.publisher) +
+    '</div>';
   var closeBtn = document.createElement("button");
   closeBtn.className = "drawer-close";
   closeBtn.innerHTML = "&times;";
@@ -464,22 +496,54 @@ function openDrawer(idx) {
   hero.appendChild(closeBtn);
   drawer.appendChild(hero);
 
+  // Body: preview + list
+  var body = document.createElement("div");
+  body.className = "drawer-body";
+
+  var preview = document.createElement("div");
+  preview.className = "drawer-preview";
+  preview.id = "drawerPreview";
+  body.appendChild(preview);
+
   var list = document.createElement("div");
   list.className = "drawer-list";
-  s.items.forEach(function(item, i) {
-    var el = document.createElement("div");
-    el.className = "drawer-item";
-    el.innerHTML = `
-      <div class="drawer-item-num">${i + 1}</div>
-      <img src="${item.cover}" alt="" onerror="this.style.display='none'">
-      <div class="drawer-item-title">${item.title}</div>
-    `;
-    list.appendChild(el);
-  });
-  drawer.appendChild(list);
+
+  for (var j = 0; j < s.items.length; j++) {
+    (function(item, jj) {
+      var el = document.createElement("div");
+      el.className = "drawer-item" + (jj === 0 ? " active" : "");
+      el.innerHTML =
+        '<img src="' + item.cover + '" alt="" onerror="this.style.display=\'none\'">' +
+        '<div class="drawer-item-title">' + item.title + '</div>';
+      el.addEventListener("click", function() {
+        activeItemIdx = jj;
+        var items = list.querySelectorAll(".drawer-item");
+        for (var k = 0; k < items.length; k++) items[k].classList.remove("active");
+        el.classList.add("active");
+        showPreview(item);
+      });
+      list.appendChild(el);
+    })(s.items[j], j);
+  }
+
+  body.appendChild(list);
+  drawer.appendChild(body);
+
+  // Show first item preview
+  showPreview(s.items[0]);
 
   document.getElementById("drawerOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
+}
+
+function showPreview(item) {
+  var preview = document.getElementById("drawerPreview");
+  if (!preview) return;
+  preview.className = "drawer-preview";
+  preview.innerHTML =
+    '<img src="' + item.cover + '" alt="' + strip(item.title) + '" onerror="this.style.display=\'none\'">' +
+    '<div class="drawer-preview-title">' + item.title + '</div>' +
+    (item.desc ? '<div class="drawer-preview-desc">' + item.desc + '</div>' : '');
 }
 
 function closeDrawer() {
@@ -496,14 +560,18 @@ function render() {
   var q = document.getElementById("search").value.toLowerCase();
   var pub = sel.value;
 
-  var filtered = allEntries.filter(function(c) {
+  var filtered = [];
+  for (var i = 0; i < allEntries.length; i++) {
+    var c = allEntries[i];
     var text = (c.title + strip(c.authors) + c.publisher + (c.subtitle || "")).toLowerCase();
     if (c.type === "series") {
-      var itemText = c.items.map(function(i) { return i.title.toLowerCase(); }).join(" ");
-      return (!q || (text + " " + itemText).indexOf(q) >= 0) && (!pub || c.publisher === pub);
+      var itemText = "";
+      for (var j = 0; j < c.items.length; j++) itemText += " " + c.items[j].title.toLowerCase();
+      if ((!q || (text + itemText).indexOf(q) >= 0) && (!pub || c.publisher === pub)) filtered.push(c);
+    } else {
+      if ((!q || text.indexOf(q) >= 0) && (!pub || c.publisher === pub)) filtered.push(c);
     }
-    return (!q || text.indexOf(q) >= 0) && (!pub || c.publisher === pub);
-  });
+  }
 
   filtered.sort(function(a, b) {
     return strip(a.title || "").toLowerCase().localeCompare(strip(b.title || "").toLowerCase());
@@ -511,37 +579,40 @@ function render() {
 
   var grid = document.getElementById("grid");
   grid.innerHTML = "";
-  filtered.forEach(function(c) {
-    var card = document.createElement("div");
-    card.className = "card";
+  for (var i = 0; i < filtered.length; i++) {
+    (function(c) {
+      var card = document.createElement("div");
+      card.className = "card";
 
-    var coverHtml = c.cover
-      ? '<img class="card-cover" src="' + c.cover + '" alt="' + strip(c.title) + '" loading="lazy" onerror="this.outerHTML=\'<div class=no-cover-card>' + strip(c.title).replace(/'/g, "") + '</div>\'">'
-      : '<div class="no-cover-card">' + strip(c.title) + '</div>';
+      var safeTitle = strip(c.title).replace(/'/g, "").replace(/"/g, "");
+      var coverHtml = c.cover
+        ? '<img class="card-cover" src="' + c.cover + '" alt="' + safeTitle + '" loading="lazy" onerror="this.outerHTML=\'<div class=no-cover-card>' + safeTitle + '</div>\'">'
+        : '<div class="no-cover-card">' + safeTitle + '</div>';
 
-    var badge = c.type === "series"
-      ? '<div class="series-indicator">' + c.items.length + ' vols</div>'
-      : "";
+      var badge = c.type === "series"
+        ? '<div class="series-indicator">' + c.items.length + ' vols</div>'
+        : "";
 
-    card.innerHTML = coverHtml + badge + `
-      <div class="card-overlay">
-        <div class="title">${c.title}</div>
-        <div class="authors">${c.authors}</div>
-        ${pubTag(c.publisher)}
-      </div>`;
+      card.innerHTML = coverHtml + badge +
+        '<div class="card-overlay">' +
+          '<div class="title">' + c.title + '</div>' +
+          '<div class="authors">' + c.authors + '</div>' +
+          pubTag(c.publisher) +
+        '</div>';
 
-    if (c.type === "series") {
-      card.style.cursor = "pointer";
-      (function(idx) {
-        card.addEventListener("click", function(e) {
-          if (e.target.closest("a")) return;
-          openDrawer(idx);
-        });
-      })(c.seriesIdx);
-    }
+      if (c.type === "series") {
+        card.style.cursor = "pointer";
+        (function(idx) {
+          card.addEventListener("click", function(e) {
+            if (e.target.closest("a")) return;
+            openDrawer(idx);
+          });
+        })(c.seriesIdx);
+      }
 
-    grid.appendChild(card);
-  });
+      grid.appendChild(card);
+    })(filtered[i]);
+  }
 
   document.getElementById("count").textContent =
     "Showing " + filtered.length + " of " + allEntries.length + " titles";
