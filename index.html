@@ -218,6 +218,34 @@
     }
     .drawer-item-title { font-size: .8rem; font-weight: 500; }
 
+    /* Not-owned volumes */
+    .drawer-item.not-owned { opacity: .45; }
+    .drawer-item.not-owned img { filter: grayscale(1); }
+    .drawer-item-status {
+      font-size: .6rem; text-transform: uppercase; letter-spacing: .05em;
+      padding: .1rem .35rem; border-radius: 3px; margin-left: auto; flex-shrink: 0;
+    }
+    .status-missing { background: #333; color: #888; }
+    .status-unreleased { background: rgba(255,77,109,.15); color: var(--accent); }
+
+    /* Single detail mode — no right column */
+    .drawer.single-mode { justify-content: center; }
+    .drawer.single-mode .drawer-preview {
+      max-width: 500px; padding: 3rem 2rem;
+    }
+    .drawer.single-mode .drawer-preview img { max-width: 350px; }
+    .drawer-preview-authors {
+      font-size: .8rem; color: #aaa; margin-top: .5rem; text-align: center;
+    }
+    .drawer-preview-authors a { color: #bbb; border: none; }
+    .drawer-preview-authors a:hover { color: var(--accent); }
+    .drawer-preview .tag {
+      display: inline-block; margin-top: .5rem;
+      background: var(--accent); color: #fff;
+      padding: .12rem .45rem; border-radius: 4px;
+      font-size: .65rem; font-weight: 600; text-decoration: none;
+    }
+
     .count {
       text-align: center; color: var(--muted);
       padding: 2rem 1rem; font-size: .8rem;
@@ -232,6 +260,8 @@
       .drawer-right { width: 100%; height: auto; max-height: 45vh; border-left: none; border-top: 1px solid #2a2a2a; }
       .drawer-preview { padding: 1.2rem; }
       .drawer-preview img { max-width: 180px; }
+      .drawer.single-mode .drawer-preview { padding: 2rem 1rem; }
+      .drawer.single-mode .drawer-preview img { max-width: 200px; }
     }
   </style>
 </head>
@@ -284,27 +314,27 @@ var pub_urls = {
 };
 
 var singles = [
-  { title: "Arrowsmith", authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Carlos Pacheco",wiki+"Carlos_Pacheco"), publisher: "Image", cover: "covers/arrowsmith.jpg" },
-  { title: "Azimut", authors: W("Wilfrid Lupano",wiki+"Wilfrid_Lupano") + " & Andr\u00e9al", publisher: "Titan Comics", cover: "covers/azimut.jpg" },
-  { title: "Rick and Morty vs. D&amp;D", authors: W("Patrick Rothfuss",wiki+"Patrick_Rothfuss") + " / " + W("Jim Zub",wiki+"Jim_Zub"), publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg" },
-  { title: "Fevre Dream", authors: W("George R.R. Martin",wiki+"George_R._R._Martin") + " / " + W("Daniel Abraham",wiki+"Daniel_Abraham_(author)") + " / Rafa Lopez", publisher: "Avatar Press", cover: "covers/fevre-dream.jpg" },
-  { title: "Wolfskin", authors: W("Warren Ellis",wiki+"Warren_Ellis") + " / " + W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp"), publisher: "Avatar Press", cover: "covers/wolfskin.jpg" },
-  { title: "Providence", authors: W("Alan Moore",wiki+"Alan_Moore") + " / " + W("Jacen Burrows",wiki+"Jacen_Burrows"), publisher: "Avatar Press", cover: "covers/providence.jpg" },
-  { title: "Cutting Edge", authors: W("Francesco Dimitri",wiki+"Francesco_Dimitri") + " / Mario Alberti", publisher: "Titan Comics", cover: "covers/cutting-edge.jpg" },
-  { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg" },
-  { title: "The Heir", authors: "RB White", publisher: "", cover: "covers/the-heir.jpg" },
-  { title: "Seven Suns", authors: "Robert Windom / Kelvin Mao", publisher: "", cover: "covers/seven-suns.jpg" },
-  { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg" },
-  { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg" },
-  { title: "Dryad", authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Justin Barcelo", publisher: "Oni Press", cover: "covers/dryad.jpg" },
-  { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg" },
-  { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg" },
-  { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg" },
-  { title: "American Gods: Shadows (#1)", authors: W("Neil Gaiman",wiki+"Neil_Gaiman") + " / " + W("P. Craig Russell",wiki+"P._Craig_Russell"), publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
-  { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg" },
-  { title: "The Unwritten", authors: W("Mike Carey",wiki+"Mike_Carey_(writer)") + " / " + W("Peter Gross",wiki+"Peter_Gross_(comics)"), publisher: "Vertigo", cover: "covers/unwritten.jpg" },
-  { title: "Elves Vol 1", authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry", publisher: "Humanoids", cover: "covers/elves.jpg" },
-  { title: "Star Wars", authors: W("Jason Aaron",wiki+"Jason_Aaron") + " / " + W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu") + " / Jorge Molina / Mike Mayhew", publisher: "Marvel", cover: "covers/star-wars.jpg" },
+  { title: "Arrowsmith", authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Carlos Pacheco",wiki+"Carlos_Pacheco"), publisher: "Image", cover: "covers/arrowsmith.jpg", desc: "A young man from 1914 America is drafted into a World War fought with dragons, magic, and flying carpets instead of planes." },
+  { title: "Azimut", authors: W("Wilfrid Lupano",wiki+"Wilfrid_Lupano") + " & Andr\u00e9al", publisher: "Titan Comics", cover: "covers/azimut.jpg", desc: "A surreal adventure through a world where time has gone haywire, following a group of misfits chasing lost hours." },
+  { title: "Rick and Morty vs. D&amp;D", authors: W("Patrick Rothfuss",wiki+"Patrick_Rothfuss") + " / " + W("Jim Zub",wiki+"Jim_Zub"), publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg", desc: "Rick and Morty enter a Dungeons & Dragons campaign that spirals out of control across multiple dimensions." },
+  { title: "Fevre Dream", authors: W("George R.R. Martin",wiki+"George_R._R._Martin") + " / " + W("Daniel Abraham",wiki+"Daniel_Abraham_(author)") + " / Rafa Lopez", publisher: "Avatar Press", cover: "covers/fevre-dream.jpg", desc: "A steamboat captain and a mysterious passenger hunt vampires along the Mississippi River in the 1850s." },
+  { title: "Wolfskin", authors: W("Warren Ellis",wiki+"Warren_Ellis") + " / " + W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp"), publisher: "Avatar Press", cover: "covers/wolfskin.jpg", desc: "A Norse berserker returns home to find his village destroyed and embarks on a bloody path of vengeance." },
+  { title: "Providence", authors: W("Alan Moore",wiki+"Alan_Moore") + " / " + W("Jacen Burrows",wiki+"Jacen_Burrows"), publisher: "Avatar Press", cover: "covers/providence.jpg", desc: "A journalist in 1919 New England uncovers a hidden world of cosmic horror inspired by the works of H.P. Lovecraft." },
+  { title: "Cutting Edge", authors: W("Francesco Dimitri",wiki+"Francesco_Dimitri") + " / Mario Alberti", publisher: "Titan Comics", cover: "covers/cutting-edge.jpg", desc: "Four strangers are drawn together by a mysterious force in a story blending urban fantasy and Italian folklore." },
+  { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg", desc: "On an alien world covered in colossal trees, hunters harvest precious sap while navigating deadly wildlife and rival factions." },
+  { title: "The Heir", authors: "RB White", publisher: "", cover: "covers/the-heir.jpg", desc: "A fantasy epic following the heir to a fractured kingdom navigating political intrigue and ancient prophecy." },
+  { title: "Seven Suns", authors: "Robert Windom / Kelvin Mao", publisher: "", cover: "covers/seven-suns.jpg", desc: "A sci-fi saga spanning seven star systems where humanity fights for survival among alien civilizations." },
+  { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg", desc: "Merlin hurls himself through time to save the future, landing in a world of Arthurian legend and cosmic warfare." },
+  { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg", desc: "A journey to the mythical Slavic island of Buyan, where the dead go and ancient powers slumber." },
+  { title: "Dryad", authors: W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe") + " / Justin Barcelo", publisher: "Oni Press", cover: "covers/dryad.jpg", desc: "A family of ex-adventurers hiding in a quiet town is forced back into action when their secrets catch up to them." },
+  { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg", desc: "A mythic tale set in feudal Japan where warriors and spirits clash behind a veil between worlds." },
+  { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg", desc: "In a far future where humanity has spread across the stars, an empire built on genetic castes begins to fracture." },
+  { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg", desc: "Chicago's only professional wizard, Harry Dresden, investigates supernatural crimes in this adaptation of the bestselling novels." },
+  { title: "American Gods: Shadows (#1)", authors: W("Neil Gaiman",wiki+"Neil_Gaiman") + " / " + W("P. Craig Russell",wiki+"P._Craig_Russell"), publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg", desc: "Shadow Moon is recruited by the mysterious Mr. Wednesday for a war between old gods and new in modern America." },
+  { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg", desc: "Two orphaned sisters with cybernetic enhancements fight to survive in a dystopian city controlled by a ruthless corporation." },
+  { title: "The Unwritten", authors: W("Mike Carey",wiki+"Mike_Carey_(writer)") + " / " + W("Peter Gross",wiki+"Peter_Gross_(comics)"), publisher: "Vertigo", cover: "covers/unwritten.jpg", desc: "Tom Taylor, the inspiration for his father's Harry Potter-like fantasy series, discovers fiction is bleeding into reality." },
+  { title: "Elves Vol 1", authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry", publisher: "Humanoids", cover: "covers/elves.jpg", desc: "An epic fantasy chronicling the different elven races and their struggles across a richly detailed world." },
+  { title: "Star Wars", authors: W("Jason Aaron",wiki+"Jason_Aaron") + " / " + W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu") + " / Jorge Molina / Mike Mayhew", publisher: "Marvel", cover: "covers/star-wars.jpg", desc: "Set between A New Hope and The Empire Strikes Back, Luke, Leia, and Han take the fight to the Empire." },
 ];
 
 var series = [
@@ -479,6 +509,7 @@ function openDrawer(idx) {
   activeItemIdx = 0;
   var drawer = document.getElementById("drawer");
   drawer.innerHTML = "";
+  drawer.className = "drawer";
 
   // LEFT: Preview panel (full height)
   var preview = document.createElement("div");
@@ -537,6 +568,31 @@ function openDrawer(idx) {
 
   // Show first item preview
   showPreview(s.items[0]);
+
+  document.getElementById("drawerOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function openSingle(singleItem) {
+  var drawer = document.getElementById("drawer");
+  drawer.innerHTML = "";
+  drawer.className = "drawer single-mode";
+
+  var closeBtn = document.createElement("button");
+  closeBtn.className = "drawer-close";
+  closeBtn.innerHTML = "&times;";
+  closeBtn.addEventListener("click", function(e) { e.stopPropagation(); closeDrawer(); });
+  drawer.appendChild(closeBtn);
+
+  var preview = document.createElement("div");
+  preview.className = "drawer-preview";
+  preview.innerHTML =
+    (singleItem.cover ? '<img src="' + singleItem.cover + '" alt="' + strip(singleItem.title) + '" onerror="this.style.display=\'none\'">' : '') +
+    '<div class="drawer-preview-title">' + singleItem.title + '</div>' +
+    '<div class="drawer-preview-authors">' + singleItem.authors + '</div>' +
+    pubTag(singleItem.publisher) +
+    (singleItem.desc ? '<div class="drawer-preview-desc">' + singleItem.desc + '</div>' : '');
+  drawer.appendChild(preview);
 
   document.getElementById("drawerOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -606,14 +662,21 @@ function render() {
           pubTag(c.publisher) +
         '</div>';
 
+      card.style.cursor = "pointer";
       if (c.type === "series") {
-        card.style.cursor = "pointer";
         (function(idx) {
           card.addEventListener("click", function(e) {
             if (e.target.closest("a")) return;
             openDrawer(idx);
           });
         })(c.seriesIdx);
+      } else {
+        (function(item) {
+          card.addEventListener("click", function(e) {
+            if (e.target.closest("a")) return;
+            openSingle(item);
+          });
+        })(c);
       }
 
       grid.appendChild(card);
