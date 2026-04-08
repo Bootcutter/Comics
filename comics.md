@@ -22,8 +22,7 @@
 | 16 | Dryad | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Justin Barcelo | [Oni Press](https://onipress.com/) |
 | 17 | Legends of the Pierced Veil | Saverio Tenuta / Bruno Letizia / Carita Lupattelli | [Humanoids](https://www.humanoids.com/) |
 | 18 | Sapiens Imperium | Sam Timel / Jorge Miguel | [Humanoids](https://www.humanoids.com/) |
-| 19 | The Dark North | Martin Dunelind / Peter Bergting et al. | [Dark Horse](https://www.darkhorse.com/) |
-| 20 | Fables Vol 1–9 + Werewolves of the Heartland | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
+| 19 | Fables Vol 1–9 + Werewolves of the Heartland | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
 | 21 | Saga (6 issues) | [Brian K. Vaughan](https://en.wikipedia.org/wiki/Brian_K._Vaughan) / [Fiona Staples](https://en.wikipedia.org/wiki/Fiona_Staples) | [Image](https://imagecomics.com/) |
 | 22 | Monstress Vol 1–2 | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
 | 23 | Rat Queens Vol 1–5 | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Roc Upchurch | [Image](https://imagecomics.com/) |

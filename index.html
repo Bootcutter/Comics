@@ -4,130 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Comic Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #1a1a2e;
-      --surface: #16213e;
-      --card: #1f2b47;
-      --accent: #e94560;
-      --text: #eee;
-      --muted: #a0a0b0;
+      --bg: #0f0f0f;
+      --surface: #181818;
+      --card: #222;
+      --accent: #ff4d6d;
+      --accent2: #c9184a;
+      --text: #f0f0f0;
+      --muted: #888;
+      --radius: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 2rem 1rem;
+      overflow-x: hidden;
     }
-    h1 { text-align: center; font-size: 2.2rem; margin-bottom: .3rem; letter-spacing: .04em; }
-    .subtitle { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: .95rem; }
+
+    /* Hero header */
+    .hero {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a1a2e 0%, var(--bg) 100%);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fa3, #ff4d6d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { color: var(--muted); margin-top: .4rem; font-size: .95rem; }
+    .stats {
+      display: flex; justify-content: center; gap: 2rem; margin-top: 1.2rem;
+    }
+    .stat-num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+
+    /* Controls */
     .controls {
-      max-width: 1100px; margin: 0 auto 1.5rem;
-      display: flex; gap: .75rem; flex-wrap: wrap;
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 1.5rem;
+      display: flex; gap: .6rem; flex-wrap: wrap;
     }
-    .controls input, .controls select {
-      padding: .55rem .85rem; border: 1px solid #333; border-radius: 6px;
-      background: var(--surface); color: var(--text); font-size: .9rem;
+    .search-wrap {
+      flex: 1; min-width: 220px; position: relative;
     }
-    .controls input { flex: 1; min-width: 200px; }
-    .controls select { min-width: 150px; }
+    .search-wrap svg {
+      position: absolute; left: .8rem; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; color: var(--muted); pointer-events: none;
+    }
+    .controls input {
+      width: 100%; padding: .65rem .8rem .65rem 2.4rem;
+      border: 1px solid #333; border-radius: var(--radius);
+      background: var(--surface); color: var(--text); font-size: .88rem;
+      font-family: inherit; transition: border-color .2s;
+    }
+    .controls input:focus { outline: none; border-color: var(--accent); }
+    .controls select {
+      padding: .65rem .8rem; border: 1px solid #333; border-radius: var(--radius);
+      background: var(--surface); color: var(--text); font-size: .88rem;
+      font-family: inherit; min-width: 140px; cursor: pointer;
+    }
+    .controls select:focus { outline: none; border-color: var(--accent); }
 
+    /* Grid — cover-focused */
     .grid {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.2rem;
     }
 
-    /* Cards */
+    /* Cover card */
     .card {
-      background: var(--card); border-radius: 10px; overflow: hidden;
-      display: flex; gap: .8rem; padding: .8rem; transition: transform .15s, box-shadow .15s;
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: default;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
-    .cover-img {
-      width: 70px; min-height: 95px; object-fit: cover; border-radius: 6px;
-      background: #2a2a4a;
+    .card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+      z-index: 2;
     }
-    .card-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: .25rem; }
-    .card-title { font-weight: 600; font-size: .95rem; line-height: 1.25; }
-    .card-authors { font-size: .8rem; color: var(--muted); line-height: 1.3; }
-    .tag {
-      display: inline-block; background: rgba(233,69,96,.18); color: var(--accent);
-      padding: .1rem .45rem; border-radius: 4px; font-size: .72rem;
-      text-decoration: none; width: fit-content; margin-top: .2rem;
+    .card-cover {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      background: #2a2a2a;
+      border-radius: var(--radius);
     }
-    .tag:hover { opacity: .8; }
-    a { color: var(--text); text-decoration: none; border-bottom: 1px dotted #555; }
-    a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-    /* Drawer overlay */
-    .drawer-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.6);
-      z-index: 100; opacity: 0; pointer-events: none;
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.4) 40%, transparent 60%);
+      opacity: 0;
       transition: opacity .25s;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: .8rem;
+      border-radius: var(--radius);
+    }
+    .card:hover .card-overlay { opacity: 1; }
+    .card-overlay .title {
+      font-size: .82rem; font-weight: 700; line-height: 1.2;
+      margin-bottom: .2rem;
+    }
+    .card-overlay .authors {
+      font-size: .68rem; color: #bbb; line-height: 1.3;
+    }
+    .card-overlay .tag {
+      display: inline-block; margin-top: .3rem;
+      background: var(--accent); color: #fff;
+      padding: .12rem .4rem; border-radius: 4px;
+      font-size: .6rem; font-weight: 600;
+      text-decoration: none; width: fit-content;
+    }
+    .card-overlay .tag:hover { background: var(--accent2); }
+    .card-overlay a { color: #ddd; text-decoration: none; border: none; }
+    .card-overlay a:hover { color: #fff; }
+
+    .series-indicator {
+      position: absolute; top: .5rem; right: .5rem;
+      background: var(--accent); color: #fff;
+      font-size: .6rem; font-weight: 700;
+      padding: .2rem .45rem; border-radius: 4px;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
+
+    .no-cover-card {
+      width: 100%; aspect-ratio: 2/3;
+      background: linear-gradient(135deg, #1a1a2e, #2a2a4a);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; color: var(--muted); text-align: center;
+      padding: .5rem;
+    }
+
+    /* Drawer */
+    .drawer-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(4px);
+      z-index: 100; opacity: 0; pointer-events: none;
+      transition: opacity .3s;
     }
     .drawer-overlay.open { opacity: 1; pointer-events: auto; }
-
     .drawer {
-      position: fixed; top: 0; right: -400px; width: 380px; max-width: 90vw;
-      height: 100vh; background: var(--surface); z-index: 101;
-      transition: right .3s ease; overflow-y: auto;
-      box-shadow: -4px 0 30px rgba(0,0,0,.5);
+      position: fixed; top: 0; right: -440px;
+      width: 420px; max-width: 92vw;
+      height: 100vh; background: var(--surface);
+      z-index: 101; transition: right .35s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+      box-shadow: -8px 0 40px rgba(0,0,0,.6);
     }
     .drawer-overlay.open .drawer { right: 0; }
 
-    .drawer-header {
-      display: flex; align-items: center; gap: .8rem;
-      padding: 1.2rem; border-bottom: 1px solid #2a2a4a;
-      position: sticky; top: 0; background: var(--surface); z-index: 1;
+    .drawer-hero {
+      position: relative; padding: 0;
     }
-    .drawer-header img { width: 60px; border-radius: 6px; }
-    .drawer-header .card-title { font-size: 1.1rem; }
+    .drawer-hero-img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      filter: brightness(.5); display: block;
+    }
+    .drawer-hero-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.2rem; background: linear-gradient(0deg, var(--surface) 10%, transparent);
+    }
+    .drawer-hero-info .title { font-size: 1.3rem; font-weight: 700; }
+    .drawer-hero-info .sub { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+    .drawer-hero-info .authors { font-size: .8rem; color: #bbb; margin-top: .3rem; }
+    .drawer-hero-info .authors a { color: #ccc; border: none; }
+    .drawer-hero-info .authors a:hover { color: var(--accent); }
+    .drawer-hero-info .tag {
+      display: inline-block; margin-top: .4rem;
+      background: var(--accent); color: #fff;
+      padding: .15rem .5rem; border-radius: 4px;
+      font-size: .68rem; font-weight: 600;
+      text-decoration: none;
+    }
     .drawer-close {
-      margin-left: auto; background: none; border: none; color: var(--muted);
-      font-size: 1.5rem; cursor: pointer; padding: .2rem .5rem;
-    }
-    .drawer-close:hover { color: var(--text); }
-
-    .drawer-item {
-      display: flex; gap: .8rem; padding: .8rem 1.2rem; align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,.04);
-      transition: background .15s;
-    }
-    .drawer-item:hover { background: rgba(233,69,96,.06); }
-    .drawer-item img { width: 50px; height: 70px; object-fit: cover; border-radius: 4px; background: #2a2a4a; }
-    .drawer-item-info { flex: 1; }
-    .drawer-item-title { font-size: .9rem; font-weight: 500; }
-    .drawer-item-sub { font-size: .78rem; color: var(--muted); }
-
-    .series-badge {
-      background: var(--accent); color: #fff; font-size: .65rem; font-weight: 700;
-      padding: .15rem .4rem; border-radius: 3px; margin-left: .4rem; vertical-align: middle;
-    }
-
-    .count { text-align: center; color: var(--muted); margin-top: 1.5rem; font-size: .85rem; }
-
-    .no-cover {
-      width: 70px; min-height: 95px; background: #2a2a4a; border-radius: 6px;
+      position: absolute; top: .8rem; right: .8rem;
+      background: rgba(0,0,0,.5); border: none; color: #fff;
+      width: 32px; height: 32px; border-radius: 50%;
+      font-size: 1.2rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      color: #555; font-size: .65rem; text-align: center; padding: .2rem;
+      transition: background .2s;
+    }
+    .drawer-close:hover { background: var(--accent); }
+
+    .drawer-list { padding: .5rem 0; }
+    .drawer-item {
+      display: flex; gap: .8rem; padding: .7rem 1.2rem;
+      align-items: center; transition: background .15s;
+    }
+    .drawer-item:hover { background: rgba(255,255,255,.04); }
+    .drawer-item img {
+      width: 44px; height: 62px; object-fit: cover;
+      border-radius: 6px; background: #2a2a2a; flex-shrink: 0;
+    }
+    .drawer-item-num {
+      width: 20px; font-size: .7rem; color: var(--muted);
+      text-align: center; flex-shrink: 0;
+    }
+    .drawer-item-title { font-size: .85rem; font-weight: 500; }
+
+    .count {
+      text-align: center; color: var(--muted);
+      padding: 2rem 1rem; font-size: .8rem;
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 1.5rem; }
-      .grid { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.8rem; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: .8rem; padding: 0 .8rem; }
+      .controls { padding: 0 .8rem 1rem; }
       .drawer { width: 100vw; max-width: 100vw; }
     }
   </style>
 </head>
 <body>
 
-<h1>My Comic Library</h1>
-<p class="subtitle">A personal collection catalog</p>
+<div class="hero">
+  <h1>Comic Library</h1>
+  <p>A personal collection</p>
+  <div class="stats">
+    <div><div class="stat-num" id="statEntries">0</div><div class="stat-label">Titles</div></div>
+    <div><div class="stat-num" id="statVolumes">0</div><div class="stat-label">Volumes</div></div>
+    <div><div class="stat-num" id="statPubs">0</div><div class="stat-label">Publishers</div></div>
+  </div>
+</div>
 
 <div class="controls">
-  <input type="text" id="search" placeholder="Search titles, authors, publishers...">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" id="search" placeholder="Search comics...">
+  </div>
   <select id="publisherFilter">
     <option value="">All Publishers</option>
   </select>
@@ -175,7 +294,6 @@ const singles = [
   { title: "Dryad", authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Justin Barcelo`, publisher: "Oni Press", cover: "covers/dryad.jpg" },
   { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg" },
   { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg" },
-  { title: "The Dark North", authors: "Martin Dunelind / Peter Bergting et al.", publisher: "Dark Horse", cover: "covers/dark-north.jpg" },
   { title: "Saga (6 issues)", authors: `${W("Brian K. Vaughan",wiki+"Brian_K._Vaughan")} / ${W("Fiona Staples",wiki+"Fiona_Staples")}`, publisher: "Image", cover: "covers/saga.jpg" },
   { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg" },
   { title: "American Gods: Shadows (#1)", authors: `${W("Neil Gaiman",wiki+"Neil_Gaiman")} / ${W("P. Craig Russell",wiki+"P._Craig_Russell")}`, publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
@@ -187,7 +305,7 @@ const singles = [
 
 const series = [
   {
-    title: "Fables", subtitle: "Vol 1\u20139 + Mysteries",
+    title: "Fables", subtitle: "Vol 1\u20139 + Werewolves",
     authors: `${W("Bill Willingham",wiki+"Bill_Willingham")} / ${W("Mark Buckingham",wiki+"Mark_Buckingham")}`,
     publisher: "Vertigo", cover: "covers/fables-1.jpg",
     items: [
@@ -300,63 +418,65 @@ const allEntries = [
   ...series.map((s, i) => ({ ...s, type: "series", seriesIdx: i })),
 ];
 
+// Stats
+const totalVols = singles.length + series.reduce((n, s) => n + s.items.length, 0);
+const allPubs = [...new Set(allEntries.map(c => c.publisher).filter(Boolean))].sort();
+document.getElementById("statEntries").textContent = allEntries.length;
+document.getElementById("statVolumes").textContent = totalVols;
+document.getElementById("statPubs").textContent = allPubs.length;
+
 // Publisher filter
-const pubs = [...new Set(allEntries.map(c => c.publisher).filter(Boolean))].sort();
 const sel = document.getElementById("publisherFilter");
-pubs.forEach(p => { const o = document.createElement("option"); o.value = p; o.textContent = p; sel.appendChild(o); });
+allPubs.forEach(p => { const o = document.createElement("option"); o.value = p; o.textContent = p; sel.appendChild(o); });
 
 function strip(html) { return html.replace(/<[^>]*>/g, ""); }
 
 function pubTag(publisher) {
-  if (!publisher) return '';
+  if (!publisher) return "";
   const url = pub_urls[publisher];
   return url
     ? `<a class="tag" href="${url}" target="_blank">${publisher}</a>`
     : `<span class="tag">${publisher}</span>`;
 }
 
-function coverImg(src, alt, cls) {
-  const c = cls || "cover-img";
-  const letter = alt ? alt.replace(/[<>"'&]/g, "")[0] || "?" : "?";
-  if (!src) return `<div class="${c} no-cover">${letter}</div>`;
-  return `<img class="${c}" src="${src}" alt="${alt || ""}" loading="lazy" onerror="this.style.display='none'">`;
-}
-
 // Drawer
 function openDrawer(idx) {
-  const s = series[idx];
+  var s = series[idx];
   if (!s) return;
-  const drawer = document.getElementById("drawer");
+  var drawer = document.getElementById("drawer");
   drawer.innerHTML = "";
 
-  const header = document.createElement("div");
-  header.className = "drawer-header";
-  header.innerHTML = `
-    ${coverImg(s.cover, s.title)}
-    <div class="card-info">
-      <div class="card-title">${s.title} <span style="color:var(--muted);font-weight:400;font-size:.8rem">(${s.subtitle})</span></div>
-      <div class="card-authors">${s.authors}</div>
+  var hero = document.createElement("div");
+  hero.className = "drawer-hero";
+  hero.innerHTML = `
+    <img class="drawer-hero-img" src="${s.cover}" alt="" onerror="this.style.display='none'">
+    <div class="drawer-hero-info">
+      <div class="title">${s.title}</div>
+      <div class="sub">${s.subtitle}</div>
+      <div class="authors">${s.authors}</div>
       ${pubTag(s.publisher)}
     </div>
   `;
-  const closeBtn = document.createElement("button");
+  var closeBtn = document.createElement("button");
   closeBtn.className = "drawer-close";
   closeBtn.innerHTML = "&times;";
   closeBtn.addEventListener("click", function(e) { e.stopPropagation(); closeDrawer(); });
-  header.appendChild(closeBtn);
-  drawer.appendChild(header);
+  hero.appendChild(closeBtn);
+  drawer.appendChild(hero);
 
-  s.items.forEach(function(item) {
-    const el = document.createElement("div");
+  var list = document.createElement("div");
+  list.className = "drawer-list";
+  s.items.forEach(function(item, i) {
+    var el = document.createElement("div");
     el.className = "drawer-item";
     el.innerHTML = `
-      ${coverImg(item.cover, item.title, "cover-img")}
-      <div class="drawer-item-info">
-        <div class="drawer-item-title">${item.title}</div>
-      </div>
+      <div class="drawer-item-num">${i + 1}</div>
+      <img src="${item.cover}" alt="" onerror="this.style.display='none'">
+      <div class="drawer-item-title">${item.title}</div>
     `;
-    drawer.appendChild(el);
+    list.appendChild(el);
   });
+  drawer.appendChild(list);
 
   document.getElementById("drawerOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
@@ -373,58 +493,58 @@ document.getElementById("drawerOverlay").addEventListener("click", function(e) {
 document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeDrawer(); });
 
 function render() {
-  const q = document.getElementById("search").value.toLowerCase();
-  const pub = sel.value;
+  var q = document.getElementById("search").value.toLowerCase();
+  var pub = sel.value;
 
-  const filtered = allEntries.filter(c => {
-    const text = (c.title + strip(c.authors) + c.publisher + (c.subtitle || "")).toLowerCase();
+  var filtered = allEntries.filter(function(c) {
+    var text = (c.title + strip(c.authors) + c.publisher + (c.subtitle || "")).toLowerCase();
     if (c.type === "series") {
-      const itemText = c.items.map(i => i.title.toLowerCase()).join(" ");
-      return (!q || (text + " " + itemText).includes(q)) && (!pub || c.publisher === pub);
+      var itemText = c.items.map(function(i) { return i.title.toLowerCase(); }).join(" ");
+      return (!q || (text + " " + itemText).indexOf(q) >= 0) && (!pub || c.publisher === pub);
     }
-    return (!q || text.includes(q)) && (!pub || c.publisher === pub);
+    return (!q || text.indexOf(q) >= 0) && (!pub || c.publisher === pub);
   });
 
-  filtered.sort((a, b) => {
-    const va = strip(a.title || "").toLowerCase();
-    const vb = strip(b.title || "").toLowerCase();
-    return va.localeCompare(vb);
+  filtered.sort(function(a, b) {
+    return strip(a.title || "").toLowerCase().localeCompare(strip(b.title || "").toLowerCase());
   });
 
-  const grid = document.getElementById("grid");
+  var grid = document.getElementById("grid");
   grid.innerHTML = "";
   filtered.forEach(function(c) {
-    const card = document.createElement("div");
+    var card = document.createElement("div");
     card.className = "card";
+
+    var coverHtml = c.cover
+      ? '<img class="card-cover" src="' + c.cover + '" alt="' + strip(c.title) + '" loading="lazy" onerror="this.outerHTML=\'<div class=no-cover-card>' + strip(c.title).replace(/'/g, "") + '</div>\'">'
+      : '<div class="no-cover-card">' + strip(c.title) + '</div>';
+
+    var badge = c.type === "series"
+      ? '<div class="series-indicator">' + c.items.length + ' vols</div>'
+      : "";
+
+    card.innerHTML = coverHtml + badge + `
+      <div class="card-overlay">
+        <div class="title">${c.title}</div>
+        <div class="authors">${c.authors}</div>
+        ${pubTag(c.publisher)}
+      </div>`;
+
     if (c.type === "series") {
       card.style.cursor = "pointer";
-      card.innerHTML = `
-        ${coverImg(c.cover, c.title)}
-        <div class="card-info">
-          <div class="card-title">${c.title} <span class="series-badge">${c.items.length} vols</span></div>
-          <div class="card-authors">${c.authors}</div>
-          ${pubTag(c.publisher)}
-        </div>`;
       (function(idx) {
         card.addEventListener("click", function(e) {
           if (e.target.closest("a")) return;
           openDrawer(idx);
         });
       })(c.seriesIdx);
-    } else {
-      card.innerHTML = `
-        ${coverImg(c.cover, c.title)}
-        <div class="card-info">
-          <div class="card-title">${c.title}</div>
-          <div class="card-authors">${c.authors}</div>
-          ${pubTag(c.publisher)}
-        </div>`;
     }
+
     grid.appendChild(card);
   });
 
-  const total = singles.length + series.reduce((n, s) => n + s.items.length, 0);
-  document.getElementById("count").textContent = `${filtered.length} entries \u2022 ${total} total volumes`;
+  document.getElementById("count").textContent =
+    "Showing " + filtered.length + " of " + allEntries.length + " titles";
 }
 
 document.getElementById("search").addEventListener("input", render);
