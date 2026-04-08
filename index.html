@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Comic Library</title>
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --surface: #16213e;
+      --card: #1f2b47;
+      --accent: #e94560;
+      --text: #eee;
+      --muted: #a0a0b0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    h1 { text-align: center; font-size: 2.2rem; margin-bottom: .3rem; letter-spacing: .04em; }
+    .subtitle { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: .95rem; }
+    .controls {
+      max-width: 1100px; margin: 0 auto 1.5rem;
+      display: flex; gap: .75rem; flex-wrap: wrap;
+    }
+    .controls input, .controls select {
+      padding: .55rem .85rem; border: 1px solid #333; border-radius: 6px;
+      background: var(--surface); color: var(--text); font-size: .9rem;
+    }
+    .controls input { flex: 1; min-width: 200px; }
+    .controls select { min-width: 150px; }
+
+    .grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card); border-radius: 10px; overflow: hidden;
+      display: flex; gap: .8rem; padding: .8rem; transition: transform .15s, box-shadow .15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+    .cover-img {
+      width: 70px; min-height: 95px; object-fit: cover; border-radius: 6px;
+      background: #2a2a4a;
+    }
+    .card-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: .25rem; }
+    .card-title { font-weight: 600; font-size: .95rem; line-height: 1.25; }
+    .card-authors { font-size: .8rem; color: var(--muted); line-height: 1.3; }
+    .tag {
+      display: inline-block; background: rgba(233,69,96,.18); color: var(--accent);
+      padding: .1rem .45rem; border-radius: 4px; font-size: .72rem;
+      text-decoration: none; width: fit-content; margin-top: .2rem;
+    }
+    .tag:hover { opacity: .8; }
+    a { color: var(--text); text-decoration: none; border-bottom: 1px dotted #555; }
+    a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* Drawer overlay */
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.6);
+      z-index: 100; opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .drawer {
+      position: fixed; top: 0; right: -400px; width: 380px; max-width: 90vw;
+      height: 100vh; background: var(--surface); z-index: 101;
+      transition: right .3s ease; overflow-y: auto;
+      box-shadow: -4px 0 30px rgba(0,0,0,.5);
+    }
+    .drawer-overlay.open .drawer { right: 0; }
+
+    .drawer-header {
+      display: flex; align-items: center; gap: .8rem;
+      padding: 1.2rem; border-bottom: 1px solid #2a2a4a;
+      position: sticky; top: 0; background: var(--surface); z-index: 1;
+    }
+    .drawer-header img { width: 60px; border-radius: 6px; }
+    .drawer-header .card-title { font-size: 1.1rem; }
+    .drawer-close {
+      margin-left: auto; background: none; border: none; color: var(--muted);
+      font-size: 1.5rem; cursor: pointer; padding: .2rem .5rem;
+    }
+    .drawer-close:hover { color: var(--text); }
+
+    .drawer-item {
+      display: flex; gap: .8rem; padding: .8rem 1.2rem; align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      transition: background .15s;
+    }
+    .drawer-item:hover { background: rgba(233,69,96,.06); }
+    .drawer-item img { width: 50px; height: 70px; object-fit: cover; border-radius: 4px; background: #2a2a4a; }
+    .drawer-item-info { flex: 1; }
+    .drawer-item-title { font-size: .9rem; font-weight: 500; }
+    .drawer-item-sub { font-size: .78rem; color: var(--muted); }
+
+    .series-badge {
+      background: var(--accent); color: #fff; font-size: .65rem; font-weight: 700;
+      padding: .15rem .4rem; border-radius: 3px; margin-left: .4rem; vertical-align: middle;
+    }
+
+    .count { text-align: center; color: var(--muted); margin-top: 1.5rem; font-size: .85rem; }
+
+    .no-cover {
+      width: 70px; min-height: 95px; background: #2a2a4a; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: #555; font-size: .65rem; text-align: center; padding: .2rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      .drawer { width: 100vw; max-width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>My Comic Library</h1>
+<p class="subtitle">A personal collection catalog</p>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search titles, authors, publishers...">
+  <select id="publisherFilter">
+    <option value="">All Publishers</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+<p class="count" id="count"></p>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
+  <div class="drawer" id="drawer"></div>
+</div>
+
+<script>
+const W = (text, url) => url ? `<a href="${url}" target="_blank">${text}</a>` : text;
+const wiki = "https://en.wikipedia.org/wiki/";
+const pub_urls = {
+  "Image": "https://imagecomics.com/",
+  "Titan Comics": "https://titan-comics.com/",
+  "Oni Press / IDW": "https://onipress.com/",
+  "BOOM! Studios": "https://www.boom-studios.com/",
+  "Avatar Press": wiki + "Avatar_Press",
+  "Humanoids": "https://www.humanoids.com/",
+  "Dark Horse": "https://www.darkhorse.com/",
+  "Vertigo": wiki + "Vertigo_Comics",
+  "Dynamite": "https://www.dynamite.com/",
+  "Insight Comics": "https://insightcomics.com/",
+  "Oni Press": "https://onipress.com/",
+};
+
+const singles = [
+  { title: "Arrowsmith", authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Carlos Pacheco",wiki+"Carlos_Pacheco")}`, publisher: "Image", cover: "covers/arrowsmith.jpg" },
+  { title: "Azimut", authors: `${W("Wilfrid Lupano",wiki+"Wilfrid_Lupano")} & Andr\u00e9al`, publisher: "Titan Comics", cover: "covers/azimut.jpg" },
+  { title: "Injection", authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Declan Shalvey",wiki+"Declan_Shalvey")}`, publisher: "Image", cover: "covers/injection.jpg" },
+  { title: "Rick and Morty vs. D&amp;D", authors: `${W("Patrick Rothfuss",wiki+"Patrick_Rothfuss")} / ${W("Jim Zub",wiki+"Jim_Zub")}`, publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg" },
+  { title: "Fevre Dream", authors: `${W("George R.R. Martin",wiki+"George_R._R._Martin")} / ${W("Daniel Abraham",wiki+"Daniel_Abraham_(author)")} / Rafa Lopez`, publisher: "Avatar Press", cover: "covers/fevre-dream.jpg" },
+  { title: "Wolfskin", authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp")}`, publisher: "Avatar Press", cover: "covers/wolfskin.jpg" },
+  { title: "Providence", authors: `${W("Alan Moore",wiki+"Alan_Moore")} / ${W("Jacen Burrows",wiki+"Jacen_Burrows")}`, publisher: "Avatar Press", cover: "covers/providence.jpg" },
+  { title: "Cutting Edge", authors: `${W("Francesco Dimitri",wiki+"Francesco_Dimitri")} / Mario Alberti`, publisher: "Titan Comics", cover: "covers/cutting-edge.jpg" },
+  { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg" },
+  { title: "The White Seven Suns", authors: "Russell, Windoly & Kelvin Mao / Jae Lee", publisher: "", cover: "" },
+  { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg" },
+  { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg" },
+  { title: "Dryad", authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Justin Barcelo`, publisher: "Oni Press", cover: "covers/dryad.jpg" },
+  { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg" },
+  { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg" },
+  { title: "The Dark North", authors: "Martin Dunelind / Peter Bergting et al.", publisher: "Dark Horse", cover: "covers/dark-north.jpg" },
+  { title: "Saga (6 issues)", authors: `${W("Brian K. Vaughan",wiki+"Brian_K._Vaughan")} / ${W("Fiona Staples",wiki+"Fiona_Staples")}`, publisher: "Image", cover: "covers/saga.jpg" },
+  { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg" },
+  { title: "Hedge Knight", authors: W("George R.R. Martin",wiki+"George_R._R._Martin"), publisher: "", cover: "covers/hedge-knight.jpg" },
+  { title: "American Gods: Shadows (#1)", authors: `${W("Neil Gaiman",wiki+"Neil_Gaiman")} / ${W("P. Craig Russell",wiki+"P._Craig_Russell")}`, publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
+];
+
+const series = [
+  {
+    title: "Fables", subtitle: "Vol 1\u20138",
+    authors: `${W("Bill Willingham",wiki+"Bill_Willingham")} / ${W("Mark Buckingham",wiki+"Mark_Buckingham")}`,
+    publisher: "Vertigo", cover: "covers/fables-1.jpg",
+    items: [
+      { title: "Vol 1: Legends in Exile", cover: "covers/fables-1.jpg" },
+      { title: "Vol 2: Animal Farm", cover: "covers/fables-2.jpg" },
+      { title: "Vol 3: Storybook Love", cover: "covers/fables-3.jpg" },
+      { title: "Vol 4: March of the Wooden Soldiers", cover: "covers/fables-4.jpg" },
+      { title: "Vol 5: The Mean Seasons", cover: "covers/fables-5.jpg" },
+      { title: "Vol 6: Homelands", cover: "covers/fables-6.jpg" },
+      { title: "Vol 7: Arabian Nights (and Days)", cover: "covers/fables-7.jpg" },
+      { title: "Vol 8: Wolves", cover: "covers/fables-8.jpg" },
+    ]
+  },
+  {
+    title: "Dune", subtitle: "Vol 1\u20132",
+    authors: `${W("Brian Herbert",wiki+"Brian_Herbert")} / ${W("Kevin J. Anderson",wiki+"Kevin_J._Anderson")}`,
+    publisher: "BOOM! Studios", cover: "covers/dune-1.jpg",
+    items: [
+      { title: "Vol 1: House Atreides", cover: "covers/dune-1.jpg" },
+      { title: "Vol 2: House Harkonnen", cover: "covers/dune-2.jpg" },
+    ]
+  },
+  {
+    title: "Monstress", subtitle: "Vol 1\u20132",
+    authors: `${W("Marjorie Liu",wiki+"Marjorie_Liu")} / ${W("Sana Takeda",wiki+"Sana_Takeda")}`,
+    publisher: "Image", cover: "covers/monstress-1.jpg",
+    items: [
+      { title: "Vol 1: Awakening", cover: "covers/monstress-1.jpg" },
+      { title: "Vol 2: The Blood", cover: "covers/monstress-2.jpg" },
+    ]
+  },
+  {
+    title: "Conan", subtitle: "Vol 1\u20132",
+    authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Cary Nord",wiki+"Cary_Nord")}`,
+    publisher: "Dark Horse", cover: "covers/conan-1.jpg",
+    items: [
+      { title: "Vol 1: The Frost Giant\u2019s Daughter", cover: "covers/conan-1.jpg" },
+      { title: "Vol 2: The God in the Bowl", cover: "covers/conan-2.jpg" },
+    ]
+  },
+  {
+    title: "Vei", subtitle: "Vol 1\u20132",
+    authors: `${W("Sara Bergmark Elfgren",wiki+"Sara_Bergmark_Elfgren")} / Karl Johnsson`,
+    publisher: "Insight Comics", cover: "covers/vei-1.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/vei-1.jpg" },
+      { title: "Vol 2", cover: "covers/vei-2.jpg" },
+    ]
+  },
+  {
+    title: "Rat Queens", subtitle: "Vol 1\u20135",
+    authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Roc Upchurch`,
+    publisher: "Image", cover: "covers/rat-queens-1.jpg",
+    items: [
+      { title: "Vol 1: Sass & Sorcery", cover: "covers/rat-queens-1.jpg" },
+      { title: "Vol 2: The Far Reaching Tentacles of N'Rygoth", cover: "covers/rat-queens-2.jpg" },
+      { title: "Vol 3: Demons", cover: "covers/rat-queens-3.jpg" },
+      { title: "Vol 4: High Fantasies", cover: "covers/rat-queens-4.jpg" },
+      { title: "Vol 5: The Colossal Magic Nothing", cover: "covers/rat-queens-5.jpg" },
+    ]
+  },
+];
+
+// Combine for filtering
+const allEntries = [
+  ...singles.map(s => ({ ...s, type: "single" })),
+  ...series.map(s => ({ ...s, type: "series" })),
+];
+
+// Publisher filter
+const pubs = [...new Set(allEntries.map(c => c.publisher).filter(Boolean))].sort();
+const sel = document.getElementById("publisherFilter");
+pubs.forEach(p => { const o = document.createElement("option"); o.value = p; o.textContent = p; sel.appendChild(o); });
+
+function strip(html) { return html.replace(/<[^>]*>/g, ""); }
+
+function pubTag(publisher) {
+  if (!publisher) return '';
+  const url = pub_urls[publisher];
+  return url
+    ? `<a class="tag" href="${url}" target="_blank">${publisher}</a>`
+    : `<span class="tag">${publisher}</span>`;
+}
+
+function coverImg(src, alt, cls) {
+  if (!src) return `<div class="${cls || 'no-cover'}">${alt ? alt[0] : '?'}</div>`;
+  return `<img class="${cls || 'cover-img'}" src="${src}" alt="${alt}" loading="lazy" onerror="this.outerHTML='<div class=\\'no-cover\\'>${(alt||'?')[0]}</div>'">`;
+}
+
+// Drawer
+function openDrawer(idx) {
+  const s = series[idx];
+  const drawer = document.getElementById("drawer");
+  drawer.innerHTML = `
+    <div class="drawer-header">
+      ${coverImg(s.cover, s.title)}
+      <div class="card-info">
+        <div class="card-title">${s.title} <span style="color:var(--muted);font-weight:400;font-size:.8rem">(${s.subtitle})</span></div>
+        <div class="card-authors">${s.authors}</div>
+        ${pubTag(s.publisher)}
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">&times;</button>
+    </div>
+    ${s.items.map(item => `
+      <div class="drawer-item">
+        ${coverImg(item.cover, item.title, 'cover-img')}
+        <div class="drawer-item-info">
+          <div class="drawer-item-title">${item.title}</div>
+        </div>
+      </div>
+    `).join("")}
+  `;
+  document.getElementById("drawerOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDrawer(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById("drawerOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const pub = sel.value;
+
+  const filtered = allEntries.filter(c => {
+    const text = (c.title + strip(c.authors) + c.publisher + (c.subtitle || "")).toLowerCase();
+    if (c.type === "series") {
+      const itemText = c.items.map(i => i.title.toLowerCase()).join(" ");
+      return (!q || (text + " " + itemText).includes(q)) && (!pub || c.publisher === pub);
+    }
+    return (!q || text.includes(q)) && (!pub || c.publisher === pub);
+  });
+
+  filtered.sort((a, b) => {
+    const va = strip(a.title || "").toLowerCase();
+    const vb = strip(b.title || "").toLowerCase();
+    return va.localeCompare(vb);
+  });
+
+  const grid = document.getElementById("grid");
+  grid.innerHTML = filtered.map(c => {
+    if (c.type === "series") {
+      const idx = series.indexOf(c);
+      return `
+        <div class="card" style="cursor:pointer" onclick="openDrawer(${idx})">
+          ${coverImg(c.cover, c.title)}
+          <div class="card-info">
+            <div class="card-title">${c.title} <span class="series-badge">${c.items.length} vols</span></div>
+            <div class="card-authors">${c.authors}</div>
+            ${pubTag(c.publisher)}
+          </div>
+        </div>`;
+    }
+    return `
+      <div class="card">
+        ${coverImg(c.cover, c.title)}
+        <div class="card-info">
+          <div class="card-title">${c.title}</div>
+          <div class="card-authors">${c.authors}</div>
+          ${pubTag(c.publisher)}
+        </div>
+      </div>`;
+  }).join("");
+
+  const total = singles.length + series.reduce((n, s) => n + s.items.length, 0);
+  document.getElementById("count").textContent = `${filtered.length} entries \u2022 ${total} total volumes`;
+}
+
+document.getElementById("search").addEventListener("input", render);
+sel.addEventListener("change", render);
+render();
+</script>
+</body>
+</html>
