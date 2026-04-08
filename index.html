@@ -341,10 +341,10 @@ var pub_urls = {
   "Ablaze": "https://ablaze.net/",
   "Marvel": "https://www.marvel.com/",
   "Abrams ComicArts": "https://abramscomicarts.com/",
+  "Scout Comics": "https://www.scoutcomics.com/",
 };
 
 var singles = [
-  { title: "Arrowsmith", authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Carlos Pacheco",wiki+"Carlos_Pacheco"), publisher: "Image", cover: "covers/arrowsmith.jpg", desc: "A young man from 1914 America is drafted into a World War fought with dragons, magic, and flying carpets instead of planes." },
   { title: "Azimut", authors: W("Wilfrid Lupano",wiki+"Wilfrid_Lupano") + " & Andr\u00e9al", publisher: "Titan Comics", cover: "covers/azimut.jpg", desc: "A surreal adventure through a world where time has gone haywire, following a group of misfits chasing lost hours." },
   { title: "Rick and Morty vs. D&amp;D", authors: W("Patrick Rothfuss",wiki+"Patrick_Rothfuss") + " / " + W("Jim Zub",wiki+"Jim_Zub"), publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg", desc: "Rick and Morty enter a Dungeons & Dragons campaign that spirals out of control across multiple dimensions." },
   { title: "Fevre Dream", authors: W("George R.R. Martin",wiki+"George_R._R._Martin") + " / " + W("Daniel Abraham",wiki+"Daniel_Abraham_(author)") + " / Rafa Lopez", publisher: "Avatar Press", cover: "covers/fevre-dream.jpg", desc: "A steamboat captain and a mysterious passenger hunt vampires along the Mississippi River in the 1850s." },
@@ -358,9 +358,6 @@ var singles = [
   { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg", desc: "A journey to the mythical Slavic island of Buyan, where the dead go and ancient powers slumber." },
   { title: "Legends of the Pierced Veil", authors: "Saverio Tenuta / Bruno Letizia / Carita Lupattelli", publisher: "Humanoids", cover: "covers/legends-pierced-veil.jpg", desc: "A mythic tale of warriors and spirits set behind a veil between worlds." },
   { title: "Sapiens Imperium", authors: "Sam Timel / Jorge Miguel", publisher: "Humanoids", cover: "covers/sapiens-imperium.jpg", desc: "In a far future where humanity has spread across the stars, an empire built on genetic castes begins to fracture." },
-  { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg", desc: "Chicago's only professional wizard, Harry Dresden, investigates supernatural crimes in this adaptation of the bestselling novels." },
-  { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg", desc: "Two orphaned sisters with cybernetic enhancements fight to survive in a dystopian city controlled by a ruthless corporation." },
-  { title: "Elves Vol 1", authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry", publisher: "Humanoids", cover: "covers/elves.jpg", desc: "An epic fantasy chronicling the different elven races and their struggles across a richly detailed world." },
   { title: "Star Wars", authors: W("Jason Aaron",wiki+"Jason_Aaron") + " / " + W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu") + " / Jorge Molina / Mike Mayhew", publisher: "Marvel", cover: "covers/star-wars.jpg", desc: "Set between A New Hope and The Empire Strikes Back, Luke, Leia, and Han take the fight to the Empire." },
 ];
 
@@ -554,6 +551,57 @@ var series = [
     items: [
       { title: "Vol 1", cover: "covers/dryad.jpg", desc: "A family of ex-adventurers hiding in a quiet town is forced back into action when their secrets catch up to them." },
       { title: "Vol 2", owned: false },
+    ]
+  },
+  {
+    title: "The Dresden Files", subtitle: "Graphic Novels",
+    authors: W("Jim Butcher",wiki+"Jim_Butcher"),
+    publisher: "Dynamite", cover: "covers/dresden-files.jpg",
+    items: [
+      { title: "Welcome to the Jungle", cover: "covers/dresden-files.jpg", desc: "Harry Dresden investigates a murder at the Lincoln Park Zoo that leads him into a deadly magical conspiracy." },
+      { title: "Storm Front Vol 1", owned: false },
+      { title: "Storm Front Vol 2", owned: false },
+      { title: "Fool Moon Vol 1", owned: false },
+      { title: "Fool Moon Vol 2", owned: false },
+      { title: "Ghoul Goblin", owned: false },
+      { title: "War Cry", owned: false },
+      { title: "Down Town", owned: false },
+      { title: "Wild Card", owned: false },
+      { title: "Dog Men", owned: false },
+    ]
+  },
+  {
+    title: "Wretches", subtitle: "#1\u20136",
+    authors: "James E. Roche",
+    publisher: "Scout Comics", cover: "covers/wretches.jpg",
+    items: [
+      { title: "#1", cover: "covers/wretches.jpg", desc: "Two orphaned siblings with cybernetic enhancements struggle to survive on an alien city, hunting sentient robots for profit." },
+      { title: "#2", owned: false },
+      { title: "#3", owned: false },
+      { title: "#4", owned: false },
+      { title: "#5", owned: false },
+      { title: "#6", owned: false },
+    ]
+  },
+  {
+    title: "Arrowsmith", subtitle: "Vol 1\u20132",
+    authors: W("Kurt Busiek",wiki+"Kurt_Busiek") + " / " + W("Carlos Pacheco",wiki+"Carlos_Pacheco"),
+    publisher: "Image", cover: "covers/arrowsmith.jpg",
+    items: [
+      { title: "Vol 1: So Smart in Their Fine Uniforms", cover: "covers/arrowsmith.jpg", desc: "A young man from 1914 America is drafted into a World War fought with dragons, magic, and flying carpets instead of planes." },
+      { title: "Vol 2: Behind Enemy Lines", owned: false },
+    ]
+  },
+  {
+    title: "Elves", subtitle: "Vol 1\u20135",
+    authors: W("Jean-Luc Istin",wiki+"Jean-Luc_Istin") + " / Nicolas Jarry",
+    publisher: "Humanoids", cover: "covers/elves.jpg",
+    items: [
+      { title: "Vol 1: The Crystal of the Blue Elves", cover: "covers/elves.jpg", desc: "An epic fantasy chronicling the different elven races and their struggles across a richly detailed world." },
+      { title: "Vol 2: The Honor of the Sylvan Elves", owned: false },
+      { title: "Vol 3: The Elven Court", owned: false },
+      { title: "Vol 4: The Dark Elf", owned: false },
+      { title: "Vol 5: The Dynasty of the Black Elves", owned: false },
     ]
   },
 ];
