@@ -6,7 +6,7 @@
 |---|-------|-----------|-----------|
 | 1 | Arrowsmith | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Carlos Pacheco](https://en.wikipedia.org/wiki/Carlos_Pacheco) | [Image](https://imagecomics.com/) |
 | 2 | Azimut | [Wilfrid Lupano](https://en.wikipedia.org/wiki/Wilfrid_Lupano) & Andréal | [Titan Comics](https://titan-comics.com/) |
-| 3 | Injection | [Warren Ellis](https://en.wikipedia.org/wiki/Warren_Ellis) / [Declan Shalvey](https://en.wikipedia.org/wiki/Declan_Shalvey) | [Image](https://imagecomics.com/) |
+| 3 | Injection Vol 1–3 | [Warren Ellis](https://en.wikipedia.org/wiki/Warren_Ellis) / [Declan Shalvey](https://en.wikipedia.org/wiki/Declan_Shalvey) | [Image](https://imagecomics.com/) |
 | 4 | Rick and Morty vs. Dungeons & Dragons | [Patrick Rothfuss](https://en.wikipedia.org/wiki/Patrick_Rothfuss) / [Jim Zub](https://en.wikipedia.org/wiki/Jim_Zub) | Oni Press / IDW |
 | 5 | Dune: House Atreides (Vol 1) | [Brian Herbert](https://en.wikipedia.org/wiki/Brian_Herbert) / [Kevin J. Anderson](https://en.wikipedia.org/wiki/Kevin_J._Anderson) | [BOOM! Studios](https://www.boom-studios.com/) |
 | 6 | Dune: House Harkonnen (Vol 2) | [Brian Herbert](https://en.wikipedia.org/wiki/Brian_Herbert) / [Kevin J. Anderson](https://en.wikipedia.org/wiki/Kevin_J._Anderson) | [BOOM! Studios](https://www.boom-studios.com/) |
@@ -15,22 +15,27 @@
 | 9 | Providence | [Alan Moore](https://en.wikipedia.org/wiki/Alan_Moore) / [Jacen Burrows](https://en.wikipedia.org/wiki/Jacen_Burrows) | [Avatar Press](https://en.wikipedia.org/wiki/Avatar_Press) |
 | 10 | Cutting Edge | [Francesco Dimitri](https://en.wikipedia.org/wiki/Francesco_Dimitri) / Mario Alberti | [Titan Comics](https://titan-comics.com/) |
 | 11 | Sap Hunters | Laurent Genefort / Alexandre Ristorcelli | [Humanoids](https://www.humanoids.com/) |
-| 12 | The White Seven Suns | Russell, Windoly & Kelvin Mao / Jae Lee | |
-| 13 | StarHenge: Book One — The Dragon and the Boar | [Liam Sharp](https://en.wikipedia.org/wiki/Liam_Sharp) | [Image](https://imagecomics.com/) |
-| 14 | Buyan | Martin Etxeberria / Xabier Etxeberria / Aritz Trueba | [Insight Comics](https://insightcomics.com/) |
-| 15 | Dryad | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Justin Barcelo | [Oni Press](https://onipress.com/) |
-| 16 | Legends of the Pierced Veil | Saverio Tenuta / Bruno Letizia / Carita Lupattelli | [Humanoids](https://www.humanoids.com/) |
-| 17 | Sapiens Imperium | Sam Timel / Jorge Miguel | [Humanoids](https://www.humanoids.com/) |
-| 18 | The Dark North | Martin Dunelind / Peter Bergting et al. | [Dark Horse](https://www.darkhorse.com/) |
-| 19 | Fables Vol 1–8 | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
-| 20 | Saga (6 issues) | [Brian K. Vaughan](https://en.wikipedia.org/wiki/Brian_K._Vaughan) / [Fiona Staples](https://en.wikipedia.org/wiki/Fiona_Staples) | [Image](https://imagecomics.com/) |
-| 21 | Monstress: Awakening | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
-| 22 | Monstress: The Blood | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
-| 23 | Rat Queens (5 issues) | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Roc Upchurch | [Image](https://imagecomics.com/) |
-| 24 | The Dresden Files | [Jim Butcher](https://en.wikipedia.org/wiki/Jim_Butcher) | [Dynamite](https://www.dynamite.com/) |
-| 25 | Conan Vol 1 | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Cary Nord](https://en.wikipedia.org/wiki/Cary_Nord) | [Dark Horse](https://www.darkhorse.com/) |
-| 26 | Conan Vol 2 | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Cary Nord](https://en.wikipedia.org/wiki/Cary_Nord) | [Dark Horse](https://www.darkhorse.com/) |
-| 27 | Hedge Knight | [George R.R. Martin](https://en.wikipedia.org/wiki/George_R._R._Martin) | |
-| 28 | American Gods: Shadows (#1) | [Neil Gaiman](https://en.wikipedia.org/wiki/Neil_Gaiman) / [P. Craig Russell](https://en.wikipedia.org/wiki/P._Craig_Russell) | [Dark Horse](https://www.darkhorse.com/) |
-| 29 | Vei Vol 1 | [Sara Bergmark Elfgren](https://en.wikipedia.org/wiki/Sara_Bergmark_Elfgren) / Karl Johnsson | [Insight Comics](https://insightcomics.com/) |
-| 30 | Vei Vol 2 | [Sara Bergmark Elfgren](https://en.wikipedia.org/wiki/Sara_Bergmark_Elfgren) / Karl Johnsson | [Insight Comics](https://insightcomics.com/) |
+| 12 | The Heir | RB White | |
+| 13 | Seven Suns | Robert Windom / Kelvin Mao | |
+| 14 | StarHenge: Book One — The Dragon and the Boar | [Liam Sharp](https://en.wikipedia.org/wiki/Liam_Sharp) | [Image](https://imagecomics.com/) |
+| 15 | Buyan | Martin Etxeberria / Xabier Etxeberria / Aritz Trueba | [Insight Comics](https://insightcomics.com/) |
+| 16 | Dryad | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Justin Barcelo | [Oni Press](https://onipress.com/) |
+| 17 | Legends of the Pierced Veil | Saverio Tenuta / Bruno Letizia / Carita Lupattelli | [Humanoids](https://www.humanoids.com/) |
+| 18 | Sapiens Imperium | Sam Timel / Jorge Miguel | [Humanoids](https://www.humanoids.com/) |
+| 19 | The Dark North | Martin Dunelind / Peter Bergting et al. | [Dark Horse](https://www.darkhorse.com/) |
+| 20 | Fables Vol 1–8 | [Bill Willingham](https://en.wikipedia.org/wiki/Bill_Willingham) / [Mark Buckingham](https://en.wikipedia.org/wiki/Mark_Buckingham) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
+| 21 | Saga (6 issues) | [Brian K. Vaughan](https://en.wikipedia.org/wiki/Brian_K._Vaughan) / [Fiona Staples](https://en.wikipedia.org/wiki/Fiona_Staples) | [Image](https://imagecomics.com/) |
+| 22 | Monstress: Awakening (Vol 1) | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
+| 23 | Monstress: The Blood (Vol 2) | [Marjorie Liu](https://en.wikipedia.org/wiki/Marjorie_Liu) / [Sana Takeda](https://en.wikipedia.org/wiki/Sana_Takeda) | [Image](https://imagecomics.com/) |
+| 24 | Rat Queens Vol 1–5 | [Kurtis J. Wiebe](https://en.wikipedia.org/wiki/Kurtis_J._Wiebe) / Roc Upchurch | [Image](https://imagecomics.com/) |
+| 25 | The Dresden Files | [Jim Butcher](https://en.wikipedia.org/wiki/Jim_Butcher) | [Dynamite](https://www.dynamite.com/) |
+| 26 | Conan (Dark Horse) Vol 1–3 | [Kurt Busiek](https://en.wikipedia.org/wiki/Kurt_Busiek) / [Cary Nord](https://en.wikipedia.org/wiki/Cary_Nord) | [Dark Horse](https://www.darkhorse.com/) |
+| 27 | The Cimmerian Vol 1–4 | Various | [Ablaze](https://ablaze.net/) |
+| 28 | Hedge Knight | [George R.R. Martin](https://en.wikipedia.org/wiki/George_R._R._Martin) | |
+| 29 | American Gods: Shadows (#1) | [Neil Gaiman](https://en.wikipedia.org/wiki/Neil_Gaiman) / [P. Craig Russell](https://en.wikipedia.org/wiki/P._Craig_Russell) | [Dark Horse](https://www.darkhorse.com/) |
+| 30 | Vei Vol 1–2 | [Sara Bergmark Elfgren](https://en.wikipedia.org/wiki/Sara_Bergmark_Elfgren) / Karl Johnsson | [Insight Comics](https://insightcomics.com/) |
+| 31 | Wretches Vol 1 | James E. Roche | |
+| 32 | The Unwritten | [Mike Carey](https://en.wikipedia.org/wiki/Mike_Carey_(writer)) / [Peter Gross](https://en.wikipedia.org/wiki/Peter_Gross_(comics)) | [Vertigo](https://en.wikipedia.org/wiki/Vertigo_Comics) |
+| 33 | Elves Vol 1 | [Jean-Luc Istin](https://en.wikipedia.org/wiki/Jean-Luc_Istin) / Nicolas Jarry | [Humanoids](https://www.humanoids.com/) |
+| 34 | The Complete ElfQuest Vol 1–3 | [Wendy Pini](https://en.wikipedia.org/wiki/Wendy_Pini) / [Richard Pini](https://en.wikipedia.org/wiki/Richard_Pini) | [Dark Horse](https://www.darkhorse.com/) |
+| 35 | Star Wars | [Jason Aaron](https://en.wikipedia.org/wiki/Jason_Aaron) / [Leinil Francis Yu](https://en.wikipedia.org/wiki/Leinil_Francis_Yu) / Jorge Molina / Mike Mayhew | [Marvel](https://www.marvel.com/) |

@@ -155,19 +155,21 @@ const pub_urls = {
   "Dynamite": "https://www.dynamite.com/",
   "Insight Comics": "https://insightcomics.com/",
   "Oni Press": "https://onipress.com/",
+  "Ablaze": "https://ablaze.net/",
+  "Marvel": "https://www.marvel.com/",
 };
 
 const singles = [
   { title: "Arrowsmith", authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Carlos Pacheco",wiki+"Carlos_Pacheco")}`, publisher: "Image", cover: "covers/arrowsmith.jpg" },
   { title: "Azimut", authors: `${W("Wilfrid Lupano",wiki+"Wilfrid_Lupano")} & Andr\u00e9al`, publisher: "Titan Comics", cover: "covers/azimut.jpg" },
-  { title: "Injection", authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Declan Shalvey",wiki+"Declan_Shalvey")}`, publisher: "Image", cover: "covers/injection.jpg" },
   { title: "Rick and Morty vs. D&amp;D", authors: `${W("Patrick Rothfuss",wiki+"Patrick_Rothfuss")} / ${W("Jim Zub",wiki+"Jim_Zub")}`, publisher: "Oni Press / IDW", cover: "covers/rick-morty-dnd.jpg" },
   { title: "Fevre Dream", authors: `${W("George R.R. Martin",wiki+"George_R._R._Martin")} / ${W("Daniel Abraham",wiki+"Daniel_Abraham_(author)")} / Rafa Lopez`, publisher: "Avatar Press", cover: "covers/fevre-dream.jpg" },
   { title: "Wolfskin", authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Juan Jose Ryp",wiki+"Juan_Jose_Ryp")}`, publisher: "Avatar Press", cover: "covers/wolfskin.jpg" },
   { title: "Providence", authors: `${W("Alan Moore",wiki+"Alan_Moore")} / ${W("Jacen Burrows",wiki+"Jacen_Burrows")}`, publisher: "Avatar Press", cover: "covers/providence.jpg" },
   { title: "Cutting Edge", authors: `${W("Francesco Dimitri",wiki+"Francesco_Dimitri")} / Mario Alberti`, publisher: "Titan Comics", cover: "covers/cutting-edge.jpg" },
   { title: "Sap Hunters", authors: "Laurent Genefort / Alexandre Ristorcelli", publisher: "Humanoids", cover: "covers/sap-hunters.jpg" },
-  { title: "The White Seven Suns", authors: "Russell, Windoly & Kelvin Mao / Jae Lee", publisher: "", cover: "" },
+  { title: "The Heir", authors: "RB White", publisher: "", cover: "covers/the-heir.jpg" },
+  { title: "Seven Suns", authors: "Robert Windom / Kelvin Mao", publisher: "", cover: "covers/seven-suns.jpg" },
   { title: "StarHenge: The Dragon and the Boar", authors: W("Liam Sharp",wiki+"Liam_Sharp"), publisher: "Image", cover: "covers/starhenge.jpg" },
   { title: "Buyan", authors: "Martin Etxeberria / Xabier Etxeberria / Aritz Trueba", publisher: "Insight Comics", cover: "covers/buyan.jpg" },
   { title: "Dryad", authors: `${W("Kurtis J. Wiebe",wiki+"Kurtis_J._Wiebe")} / Justin Barcelo`, publisher: "Oni Press", cover: "covers/dryad.jpg" },
@@ -178,6 +180,10 @@ const singles = [
   { title: "The Dresden Files", authors: W("Jim Butcher",wiki+"Jim_Butcher"), publisher: "Dynamite", cover: "covers/dresden-files.jpg" },
   { title: "Hedge Knight", authors: W("George R.R. Martin",wiki+"George_R._R._Martin"), publisher: "", cover: "covers/hedge-knight.jpg" },
   { title: "American Gods: Shadows (#1)", authors: `${W("Neil Gaiman",wiki+"Neil_Gaiman")} / ${W("P. Craig Russell",wiki+"P._Craig_Russell")}`, publisher: "Dark Horse", cover: "covers/american-gods-shadows.jpg" },
+  { title: "Wretches Vol 1", authors: W("James E. Roche", wiki+"James_E._Roche"), publisher: "", cover: "covers/wretches.jpg" },
+  { title: "The Unwritten", authors: `${W("Mike Carey",wiki+"Mike_Carey_(writer)")} / ${W("Peter Gross",wiki+"Peter_Gross_(comics)")}`, publisher: "Vertigo", cover: "covers/unwritten.jpg" },
+  { title: "Elves Vol 1", authors: `${W("Jean-Luc Istin",wiki+"Jean-Luc_Istin")} / Nicolas Jarry`, publisher: "Humanoids", cover: "covers/elves.jpg" },
+  { title: "Star Wars", authors: `${W("Jason Aaron",wiki+"Jason_Aaron")} / ${W("Leinil Francis Yu",wiki+"Leinil_Francis_Yu")} / Jorge Molina / Mike Mayhew`, publisher: "Marvel", cover: "covers/star-wars.jpg" },
 ];
 
 const series = [
@@ -194,6 +200,16 @@ const series = [
       { title: "Vol 6: Homelands", cover: "covers/fables-6.jpg" },
       { title: "Vol 7: Arabian Nights (and Days)", cover: "covers/fables-7.jpg" },
       { title: "Vol 8: Wolves", cover: "covers/fables-8.jpg" },
+    ]
+  },
+  {
+    title: "Injection", subtitle: "Vol 1\u20133",
+    authors: `${W("Warren Ellis",wiki+"Warren_Ellis")} / ${W("Declan Shalvey",wiki+"Declan_Shalvey")}`,
+    publisher: "Image", cover: "covers/injection.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/injection.jpg" },
+      { title: "Vol 2", cover: "covers/injection-2.jpg" },
+      { title: "Vol 3", cover: "covers/injection-3.jpg" },
     ]
   },
   {
@@ -215,12 +231,24 @@ const series = [
     ]
   },
   {
-    title: "Conan", subtitle: "Vol 1\u20132",
+    title: "Conan (Dark Horse)", subtitle: "Vol 1\u20133",
     authors: `${W("Kurt Busiek",wiki+"Kurt_Busiek")} / ${W("Cary Nord",wiki+"Cary_Nord")}`,
     publisher: "Dark Horse", cover: "covers/conan-1.jpg",
     items: [
       { title: "Vol 1: The Frost Giant\u2019s Daughter", cover: "covers/conan-1.jpg" },
       { title: "Vol 2: The God in the Bowl", cover: "covers/conan-2.jpg" },
+      { title: "Vol 3: The Tower of the Elephant", cover: "covers/conan-3.jpg" },
+    ]
+  },
+  {
+    title: "The Cimmerian", subtitle: "Vol 1\u20134",
+    authors: "Various",
+    publisher: "Ablaze", cover: "covers/cimmerian-1.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/cimmerian-1.jpg" },
+      { title: "Vol 2", cover: "covers/cimmerian-2.jpg" },
+      { title: "Vol 3", cover: "covers/cimmerian-3.jpg" },
+      { title: "Vol 4", cover: "covers/cimmerian-4.jpg" },
     ]
   },
   {
@@ -238,10 +266,20 @@ const series = [
     publisher: "Image", cover: "covers/rat-queens-1.jpg",
     items: [
       { title: "Vol 1: Sass & Sorcery", cover: "covers/rat-queens-1.jpg" },
-      { title: "Vol 2: The Far Reaching Tentacles of N'Rygoth", cover: "covers/rat-queens-2.jpg" },
+      { title: "Vol 2: The Far Reaching Tentacles of N\u2019Rygoth", cover: "covers/rat-queens-2.jpg" },
       { title: "Vol 3: Demons", cover: "covers/rat-queens-3.jpg" },
       { title: "Vol 4: High Fantasies", cover: "covers/rat-queens-4.jpg" },
       { title: "Vol 5: The Colossal Magic Nothing", cover: "covers/rat-queens-5.jpg" },
+    ]
+  },
+  {
+    title: "The Complete ElfQuest", subtitle: "Vol 1\u20133",
+    authors: `${W("Wendy Pini",wiki+"Wendy_Pini")} / ${W("Richard Pini",wiki+"Richard_Pini")}`,
+    publisher: "Dark Horse", cover: "covers/elfquest-1.jpg",
+    items: [
+      { title: "Vol 1", cover: "covers/elfquest-1.jpg" },
+      { title: "Vol 2", cover: "covers/elfquest-2.jpg" },
+      { title: "Vol 3", cover: "covers/elfquest-3.jpg" },
     ]
   },
 ];
